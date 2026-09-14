@@ -13,16 +13,16 @@ info:
   x-logo:
     url: https://pulpproject.org/assets/pulp_logo_icon.svg
   x-pulp-app-versions:
-    core: 3.116.1
-    certguard: 3.116.1
-    file: 3.116.1
+    core: 3.117.1
     npm: 0.10.0
-    python: 3.35.0
+    maven: 0.27.4
     hugging_face: 0.3.2
-    service: 0.1.0
-    maven: 0.26.0
+    certguard: 3.117.1
+    file: 3.117.1
     container: 2.29.0
     rpm: 3.38.5
+    service: 0.1.0
+    python: 3.36.2
   x-pulp-domain-enabled: true
 servers:
 - url: http://localhost:8080/
@@ -1839,7 +1839,7 @@ paths:
     get:
       description: "A customized named ModelViewSet that knows how to register itself\
         \ with the Pulp API router.This viewset is discoverable by its name.\"Normal\"\
-        \ Django Models and Master/Detail models are supported by the ``register_with``\
+        \ Django Models and Master/Detail models are supported by the `register_with`\
         \ method.Attributes:    lookup_field (str): The name of the field by which\
         \ an object should be looked up, in        addition to any parent lookups\
         \ if this ViewSet is nested. Defaults to 'pk'    endpoint_name (str): The\
@@ -2075,7 +2075,7 @@ paths:
     post:
       description: "A customized named ModelViewSet that knows how to register itself\
         \ with the Pulp API router.This viewset is discoverable by its name.\"Normal\"\
-        \ Django Models and Master/Detail models are supported by the ``register_with``\
+        \ Django Models and Master/Detail models are supported by the `register_with`\
         \ method.Attributes:    lookup_field (str): The name of the field by which\
         \ an object should be looked up, in        addition to any parent lookups\
         \ if this ViewSet is nested. Defaults to 'pk'    endpoint_name (str): The\
@@ -2165,7 +2165,7 @@ paths:
     get:
       description: "A customized named ModelViewSet that knows how to register itself\
         \ with the Pulp API router.This viewset is discoverable by its name.\"Normal\"\
-        \ Django Models and Master/Detail models are supported by the ``register_with``\
+        \ Django Models and Master/Detail models are supported by the `register_with`\
         \ method.Attributes:    lookup_field (str): The name of the field by which\
         \ an object should be looked up, in        addition to any parent lookups\
         \ if this ViewSet is nested. Defaults to 'pk'    endpoint_name (str): The\
@@ -2334,19 +2334,19 @@ paths:
           `core.openpgp_publickey` - core.openpgp_publickey* `core.openpgp_publicsubkey`
           - core.openpgp_publicsubkey* `core.openpgp_userid` - core.openpgp_userid*
           `core.openpgp_userattribute` - core.openpgp_userattribute* `core.openpgp_signature`
-          - core.openpgp_signature* `file.file` - file.file* `npm.package` - npm.package*
-          `python.python` - python.python* `python.provenance` - python.provenance*
-          `python.python_yank` - python.python_yank* `hugging_face.hugging-face` -
-          hugging_face.hugging-face* `maven.artifact` - maven.artifact* `maven.metadata`
-          - maven.metadata* `maven.package` - maven.package* `container.blob` - container.blob*
-          `container.manifest` - container.manifest* `container.tag` - container.tag*
-          `container.signature` - container.signature* `rpm.advisory` - rpm.advisory*
-          `rpm.packagegroup` - rpm.packagegroup* `rpm.packagecategory` - rpm.packagecategory*
-          `rpm.packageenvironment` - rpm.packageenvironment* `rpm.packagelangpacks`
-          - rpm.packagelangpacks* `rpm.repo_metadata_file` - rpm.repo_metadata_file*
-          `rpm.distribution_tree` - rpm.distribution_tree* `rpm.package` - rpm.package*
-          `rpm.modulemd` - rpm.modulemd* `rpm.modulemd_defaults` - rpm.modulemd_defaults*
-          `rpm.modulemd_obsolete` - rpm.modulemd_obsolete
+          - core.openpgp_signature* `npm.package` - npm.package* `maven.artifact`
+          - maven.artifact* `maven.metadata` - maven.metadata* `maven.package` - maven.package*
+          `maven.index-page` - maven.index-page* `hugging_face.hugging-face` - hugging_face.hugging-face*
+          `file.file` - file.file* `container.blob` - container.blob* `container.manifest`
+          - container.manifest* `container.tag` - container.tag* `container.signature`
+          - container.signature* `rpm.advisory` - rpm.advisory* `rpm.packagegroup`
+          - rpm.packagegroup* `rpm.packagecategory` - rpm.packagecategory* `rpm.packageenvironment`
+          - rpm.packageenvironment* `rpm.packagelangpacks` - rpm.packagelangpacks*
+          `rpm.repo_metadata_file` - rpm.repo_metadata_file* `rpm.distribution_tree`
+          - rpm.distribution_tree* `rpm.package` - rpm.package* `rpm.modulemd` - rpm.modulemd*
+          `rpm.modulemd_defaults` - rpm.modulemd_defaults* `rpm.modulemd_obsolete`
+          - rpm.modulemd_obsolete* `python.python` - python.python* `python.provenance`
+          - python.provenance* `python.python_yank` - python.python_yank
         explode: true
         in: query
         name: pulp_type
@@ -2366,6 +2366,7 @@ paths:
           - file.file
           - hugging_face.hugging-face
           - maven.artifact
+          - maven.index-page
           - maven.metadata
           - maven.package
           - npm.package
@@ -2389,19 +2390,20 @@ paths:
           - core.publishedmetadata* `core.openpgp_publickey` - core.openpgp_publickey*
           `core.openpgp_publicsubkey` - core.openpgp_publicsubkey* `core.openpgp_userid`
           - core.openpgp_userid* `core.openpgp_userattribute` - core.openpgp_userattribute*
-          `core.openpgp_signature` - core.openpgp_signature* `file.file` - file.file*
-          `npm.package` - npm.package* `python.python` - python.python* `python.provenance`
-          - python.provenance* `python.python_yank` - python.python_yank* `hugging_face.hugging-face`
-          - hugging_face.hugging-face* `maven.artifact` - maven.artifact* `maven.metadata`
-          - maven.metadata* `maven.package` - maven.package* `container.blob` - container.blob*
-          `container.manifest` - container.manifest* `container.tag` - container.tag*
-          `container.signature` - container.signature* `rpm.advisory` - rpm.advisory*
-          `rpm.packagegroup` - rpm.packagegroup* `rpm.packagecategory` - rpm.packagecategory*
-          `rpm.packageenvironment` - rpm.packageenvironment* `rpm.packagelangpacks`
-          - rpm.packagelangpacks* `rpm.repo_metadata_file` - rpm.repo_metadata_file*
-          `rpm.distribution_tree` - rpm.distribution_tree* `rpm.package` - rpm.package*
-          `rpm.modulemd` - rpm.modulemd* `rpm.modulemd_defaults` - rpm.modulemd_defaults*
-          `rpm.modulemd_obsolete` - rpm.modulemd_obsolete
+          `core.openpgp_signature` - core.openpgp_signature* `npm.package` - npm.package*
+          `maven.artifact` - maven.artifact* `maven.metadata` - maven.metadata* `maven.package`
+          - maven.package* `maven.index-page` - maven.index-page* `hugging_face.hugging-face`
+          - hugging_face.hugging-face* `file.file` - file.file* `container.blob` -
+          container.blob* `container.manifest` - container.manifest* `container.tag`
+          - container.tag* `container.signature` - container.signature* `rpm.advisory`
+          - rpm.advisory* `rpm.packagegroup` - rpm.packagegroup* `rpm.packagecategory`
+          - rpm.packagecategory* `rpm.packageenvironment` - rpm.packageenvironment*
+          `rpm.packagelangpacks` - rpm.packagelangpacks* `rpm.repo_metadata_file`
+          - rpm.repo_metadata_file* `rpm.distribution_tree` - rpm.distribution_tree*
+          `rpm.package` - rpm.package* `rpm.modulemd` - rpm.modulemd* `rpm.modulemd_defaults`
+          - rpm.modulemd_defaults* `rpm.modulemd_obsolete` - rpm.modulemd_obsolete*
+          `python.python` - python.python* `python.provenance` - python.provenance*
+          `python.python_yank` - python.python_yank
         explode: false
         in: query
         name: pulp_type__in
@@ -2422,6 +2424,7 @@ paths:
             - file.file
             - hugging_face.hugging-face
             - maven.artifact
+            - maven.index-page
             - maven.metadata
             - maven.package
             - npm.package
@@ -8727,6 +8730,317 @@ paths:
       summary: Upload a Maven artifact synchronously.
       tags:
       - "Content: Artifact"
+  /api/pulp/{pulp_domain}/api/v3/content/maven/maven/index-page/:
+    get:
+      description: A read-only ViewSet for MavenIndexPage.
+      operationId: content_maven_maven_index_page_list
+      parameters:
+      - description: List of profilers to use on tasks.
+        explode: false
+        in: header
+        name: X-Task-Diagnostics
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: simple
+      - description: Number of results to return per page.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: The initial index from which to return the results.
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Ordering* `pk` - Pk* `-pk` - Pk (descending)
+        explode: false
+        in: query
+        name: ordering
+        required: false
+        schema:
+          items:
+            enum:
+            - -pk
+            - pk
+            type: string
+          type: array
+        style: form
+      - description: Minutes Content has been orphaned for. -1 uses ORPHAN_PROTECTION_TIME.
+        explode: true
+        in: query
+        name: orphaned_for
+        required: false
+        schema:
+          type: number
+        style: form
+      - description: Multiple values may be separated by commas.
+        explode: false
+        in: query
+        name: prn__in
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - explode: false
+        in: path
+        name: pulp_domain
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-isDomain: true
+      - description: Multiple values may be separated by commas.
+        explode: false
+        in: query
+        name: pulp_href__in
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: Multiple values may be separated by commas.
+        explode: false
+        in: query
+        name: pulp_id__in
+        required: false
+        schema:
+          items:
+            format: uuid
+            type: string
+          type: array
+        style: form
+      - description: Filter labels by search string
+        explode: true
+        in: query
+        name: pulp_label_select
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Filter results by using NOT, AND and OR operations on other\
+          \ filters"
+        explode: true
+        in: query
+        name: q
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: repository_version
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: repository_version_added
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: repository_version_removed
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: A list of fields to include in the response.
+        explode: true
+        in: query
+        name: fields
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: A list of fields to exclude from the response.
+        explode: true
+        in: query
+        name: exclude_fields
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Paginatedmaven.MavenIndexPageResponseList"
+          description: ""
+      security:
+      - basicAuth: []
+      - cookieAuth: []
+      summary: List maven index pages
+      tags:
+      - "Content: Maven Index-Page"
+  '{maven_maven_index_page_href}':
+    get:
+      description: A read-only ViewSet for MavenIndexPage.
+      operationId: content_maven_maven_index_page_read
+      parameters:
+      - description: List of profilers to use on tasks.
+        explode: false
+        in: header
+        name: X-Task-Diagnostics
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: simple
+      - explode: false
+        in: path
+        name: maven_maven_index_page_href
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: A list of fields to include in the response.
+        explode: true
+        in: query
+        name: fields
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: A list of fields to exclude from the response.
+        explode: true
+        in: query
+        name: exclude_fields
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/maven.MavenIndexPageResponse"
+          description: ""
+      security:
+      - basicAuth: []
+      - cookieAuth: []
+      summary: Inspect a maven index page
+      tags:
+      - "Content: Maven Index-Page"
+  '{maven_maven_index_page_href}set_label/':
+    post:
+      description: Set a single pulp_label on the object to a specific value or null.
+      operationId: content_maven_maven_index_page_set_label
+      parameters:
+      - description: List of profilers to use on tasks.
+        explode: false
+        in: header
+        name: X-Task-Diagnostics
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: simple
+      - explode: false
+        in: path
+        name: maven_maven_index_page_href
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SetLabel"
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/SetLabel"
+          multipart/form-data:
+            schema:
+              $ref: "#/components/schemas/SetLabel"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SetLabelResponse"
+          description: ""
+      security:
+      - basicAuth: []
+      - cookieAuth: []
+      summary: Set a label
+      tags:
+      - "Content: Maven Index-Page"
+  '{maven_maven_index_page_href}unset_label/':
+    post:
+      description: Unset a single pulp_label on the object.
+      operationId: content_maven_maven_index_page_unset_label
+      parameters:
+      - description: List of profilers to use on tasks.
+        explode: false
+        in: header
+        name: X-Task-Diagnostics
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: simple
+      - explode: false
+        in: path
+        name: maven_maven_index_page_href
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UnsetLabel"
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/UnsetLabel"
+          multipart/form-data:
+            schema:
+              $ref: "#/components/schemas/UnsetLabel"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UnsetLabelResponse"
+          description: ""
+      security:
+      - basicAuth: []
+      - cookieAuth: []
+      summary: Unset a label
+      tags:
+      - "Content: Maven Index-Page"
   /api/pulp/{pulp_domain}/api/v3/content/maven/metadata/:
     get:
       description: A ViewSet for MavenMetadata.
@@ -20770,10 +21084,10 @@ paths:
           type: string
         style: form
       - description: Pulp type* `core.artifact` - core.artifact* `core.openpgp` -
-          core.openpgp* `file.file` - file.file* `npm.npm` - npm.npm* `python.python`
-          - python.python* `hugging_face.hugging-face` - hugging_face.hugging-face*
-          `maven.maven` - maven.maven* `container.pull-through` - container.pull-through*
-          `container.container` - container.container* `rpm.rpm` - rpm.rpm
+          core.openpgp* `npm.npm` - npm.npm* `maven.maven` - maven.maven* `hugging_face.hugging-face`
+          - hugging_face.hugging-face* `file.file` - file.file* `container.pull-through`
+          - container.pull-through* `container.container` - container.container* `rpm.rpm`
+          - rpm.rpm* `python.python` - python.python
         explode: true
         in: query
         name: pulp_type
@@ -20793,11 +21107,11 @@ paths:
           type: string
         style: form
       - description: Multiple values may be separated by commas.* `core.artifact`
-          - core.artifact* `core.openpgp` - core.openpgp* `file.file` - file.file*
-          `npm.npm` - npm.npm* `python.python` - python.python* `hugging_face.hugging-face`
-          - hugging_face.hugging-face* `maven.maven` - maven.maven* `container.pull-through`
-          - container.pull-through* `container.container` - container.container* `rpm.rpm`
-          - rpm.rpm
+          - core.artifact* `core.openpgp` - core.openpgp* `npm.npm` - npm.npm* `maven.maven`
+          - maven.maven* `hugging_face.hugging-face` - hugging_face.hugging-face*
+          `file.file` - file.file* `container.pull-through` - container.pull-through*
+          `container.container` - container.container* `rpm.rpm` - rpm.rpm* `python.python`
+          - python.python
         explode: false
         in: query
         name: pulp_type__in
@@ -32468,8 +32782,8 @@ paths:
             type: string
           type: array
         style: form
-      - description: Pulp type* `file.file` - file.file* `python.python` - python.python*
-          `hugging_face.hugging-face` - hugging_face.hugging-face* `rpm.rpm` - rpm.rpm
+      - description: Pulp type* `hugging_face.hugging-face` - hugging_face.hugging-face*
+          `file.file` - file.file* `rpm.rpm` - rpm.rpm* `python.python` - python.python
         explode: true
         in: query
         name: pulp_type
@@ -32482,9 +32796,9 @@ paths:
           - rpm.rpm
           type: string
         style: form
-      - description: Multiple values may be separated by commas.* `file.file` - file.file*
-          `python.python` - python.python* `hugging_face.hugging-face` - hugging_face.hugging-face*
-          `rpm.rpm` - rpm.rpm
+      - description: Multiple values may be separated by commas.* `hugging_face.hugging-face`
+          - hugging_face.hugging-face* `file.file` - file.file* `rpm.rpm` - rpm.rpm*
+          `python.python` - python.python
         explode: false
         in: query
         name: pulp_type__in
@@ -35293,7 +35607,7 @@ paths:
     get:
       description: "A customized named ModelViewSet that knows how to register itself\
         \ with the Pulp API router.This viewset is discoverable by its name.\"Normal\"\
-        \ Django Models and Master/Detail models are supported by the ``register_with``\
+        \ Django Models and Master/Detail models are supported by the `register_with`\
         \ method.Attributes:    lookup_field (str): The name of the field by which\
         \ an object should be looked up, in        addition to any parent lookups\
         \ if this ViewSet is nested. Defaults to 'pk'    endpoint_name (str): The\
@@ -35542,7 +35856,7 @@ paths:
     post:
       description: "A customized named ModelViewSet that knows how to register itself\
         \ with the Pulp API router.This viewset is discoverable by its name.\"Normal\"\
-        \ Django Models and Master/Detail models are supported by the ``register_with``\
+        \ Django Models and Master/Detail models are supported by the `register_with`\
         \ method.Attributes:    lookup_field (str): The name of the field by which\
         \ an object should be looked up, in        addition to any parent lookups\
         \ if this ViewSet is nested. Defaults to 'pk'    endpoint_name (str): The\
@@ -35605,7 +35919,7 @@ paths:
     delete:
       description: "A customized named ModelViewSet that knows how to register itself\
         \ with the Pulp API router.This viewset is discoverable by its name.\"Normal\"\
-        \ Django Models and Master/Detail models are supported by the ``register_with``\
+        \ Django Models and Master/Detail models are supported by the `register_with`\
         \ method.Attributes:    lookup_field (str): The name of the field by which\
         \ an object should be looked up, in        addition to any parent lookups\
         \ if this ViewSet is nested. Defaults to 'pk'    endpoint_name (str): The\
@@ -35650,7 +35964,7 @@ paths:
     get:
       description: "A customized named ModelViewSet that knows how to register itself\
         \ with the Pulp API router.This viewset is discoverable by its name.\"Normal\"\
-        \ Django Models and Master/Detail models are supported by the ``register_with``\
+        \ Django Models and Master/Detail models are supported by the `register_with`\
         \ method.Attributes:    lookup_field (str): The name of the field by which\
         \ an object should be looked up, in        addition to any parent lookups\
         \ if this ViewSet is nested. Defaults to 'pk'    endpoint_name (str): The\
@@ -35767,7 +36081,7 @@ paths:
     post:
       description: "A customized named ModelViewSet that knows how to register itself\
         \ with the Pulp API router.This viewset is discoverable by its name.\"Normal\"\
-        \ Django Models and Master/Detail models are supported by the ``register_with``\
+        \ Django Models and Master/Detail models are supported by the `register_with`\
         \ method.Attributes:    lookup_field (str): The name of the field by which\
         \ an object should be looked up, in        addition to any parent lookups\
         \ if this ViewSet is nested. Defaults to 'pk'    endpoint_name (str): The\
@@ -35973,7 +36287,7 @@ paths:
     get:
       description: "A customized named ModelViewSet that knows how to register itself\
         \ with the Pulp API router.This viewset is discoverable by its name.\"Normal\"\
-        \ Django Models and Master/Detail models are supported by the ``register_with``\
+        \ Django Models and Master/Detail models are supported by the `register_with`\
         \ method.Attributes:    lookup_field (str): The name of the field by which\
         \ an object should be looked up, in        addition to any parent lookups\
         \ if this ViewSet is nested. Defaults to 'pk'    endpoint_name (str): The\
@@ -36042,7 +36356,7 @@ paths:
     get:
       description: "A customized named ModelViewSet that knows how to register itself\
         \ with the Pulp API router.This viewset is discoverable by its name.\"Normal\"\
-        \ Django Models and Master/Detail models are supported by the ``register_with``\
+        \ Django Models and Master/Detail models are supported by the `register_with`\
         \ method.Attributes:    lookup_field (str): The name of the field by which\
         \ an object should be looked up, in        addition to any parent lookups\
         \ if this ViewSet is nested. Defaults to 'pk'    endpoint_name (str): The\
@@ -36358,11 +36672,11 @@ paths:
             type: string
           type: array
         style: form
-      - description: Pulp type* `file.file` - file.file* `file.git` - file.git* `npm.npm`
-          - npm.npm* `python.python` - python.python* `hugging_face.hugging-face`
-          - hugging_face.hugging-face* `maven.maven` - maven.maven* `container.container`
-          - container.container* `container.pull-through` - container.pull-through*
-          `rpm.rpm` - rpm.rpm* `rpm.uln` - rpm.uln
+      - description: Pulp type* `npm.npm` - npm.npm* `maven.maven` - maven.maven*
+          `hugging_face.hugging-face` - hugging_face.hugging-face* `file.file` - file.file*
+          `file.git` - file.git* `container.container` - container.container* `container.pull-through`
+          - container.pull-through* `rpm.rpm` - rpm.rpm* `rpm.uln` - rpm.uln* `python.python`
+          - python.python
         explode: true
         in: query
         name: pulp_type
@@ -36381,11 +36695,11 @@ paths:
           - rpm.uln
           type: string
         style: form
-      - description: Multiple values may be separated by commas.* `file.file` - file.file*
-          `file.git` - file.git* `npm.npm` - npm.npm* `python.python` - python.python*
-          `hugging_face.hugging-face` - hugging_face.hugging-face* `maven.maven` -
-          maven.maven* `container.container` - container.container* `container.pull-through`
-          - container.pull-through* `rpm.rpm` - rpm.rpm* `rpm.uln` - rpm.uln
+      - description: Multiple values may be separated by commas.* `npm.npm` - npm.npm*
+          `maven.maven` - maven.maven* `hugging_face.hugging-face` - hugging_face.hugging-face*
+          `file.file` - file.file* `file.git` - file.git* `container.container` -
+          container.container* `container.pull-through` - container.pull-through*
+          `rpm.rpm` - rpm.rpm* `rpm.uln` - rpm.uln* `python.python` - python.python
         explode: false
         in: query
         name: pulp_type__in
@@ -45447,11 +45761,10 @@ paths:
         schema:
           type: string
         style: form
-      - description: Pulp type* `core.openpgp` - core.openpgp* `file.file` - file.file*
-          `npm.npm` - npm.npm* `python.python` - python.python* `hugging_face.hugging-face`
-          - hugging_face.hugging-face* `maven.maven` - maven.maven* `container.container`
-          - container.container* `container.container-push` - container.container-push*
-          `rpm.rpm` - rpm.rpm
+      - description: Pulp type* `core.openpgp` - core.openpgp* `npm.npm` - npm.npm*
+          `maven.maven` - maven.maven* `hugging_face.hugging-face` - hugging_face.hugging-face*
+          `file.file` - file.file* `container.container` - container.container* `container.container-push`
+          - container.container-push* `rpm.rpm` - rpm.rpm* `python.python` - python.python
         explode: true
         in: query
         name: pulp_type
@@ -45470,10 +45783,10 @@ paths:
           type: string
         style: form
       - description: Multiple values may be separated by commas.* `core.openpgp` -
-          core.openpgp* `file.file` - file.file* `npm.npm` - npm.npm* `python.python`
-          - python.python* `hugging_face.hugging-face` - hugging_face.hugging-face*
-          `maven.maven` - maven.maven* `container.container` - container.container*
-          `container.container-push` - container.container-push* `rpm.rpm` - rpm.rpm
+          core.openpgp* `npm.npm` - npm.npm* `maven.maven` - maven.maven* `hugging_face.hugging-face`
+          - hugging_face.hugging-face* `file.file` - file.file* `container.container`
+          - container.container* `container.container-push` - container.container-push*
+          `rpm.rpm` - rpm.rpm* `python.python` - python.python
         explode: false
         in: query
         name: pulp_type__in
@@ -53671,6 +53984,45 @@ paths:
       summary: Remove a role
       tags:
       - "Repositories: Maven"
+  '{maven_maven_repository_href}repair_index_pages/':
+    post:
+      description: Trigger an asynchronous task to generate (or regenerate) HTML directory
+        index pages for every directory in the latest repository version. This is
+        a one-time catch-up for repositories created before the pre-generation feature
+        was deployed. After the task completes every directory URL will be served
+        by a pre-generated page rather than the on-demand fallback.
+      operationId: repositories_maven_maven_repair_index_pages
+      parameters:
+      - description: List of profilers to use on tasks.
+        explode: false
+        in: header
+        name: X-Task-Diagnostics
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: simple
+      - explode: false
+        in: path
+        name: maven_maven_repository_href
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AsyncOperationResponse"
+          description: ""
+      security:
+      - basicAuth: []
+      - cookieAuth: []
+      summary: Repair index pages
+      tags:
+      - "Repositories: Maven"
   '{maven_maven_repository_href}repair_metadata/':
     post:
       description: Trigger an asynchronous task to regenerate all maven-metadata.xml
@@ -60738,7 +61090,7 @@ paths:
     get:
       description: "A customized named ModelViewSet that knows how to register itself\
         \ with the Pulp API router.This viewset is discoverable by its name.\"Normal\"\
-        \ Django Models and Master/Detail models are supported by the ``register_with``\
+        \ Django Models and Master/Detail models are supported by the `register_with`\
         \ method.Attributes:    lookup_field (str): The name of the field by which\
         \ an object should be looked up, in        addition to any parent lookups\
         \ if this ViewSet is nested. Defaults to 'pk'    endpoint_name (str): The\
@@ -61369,7 +61721,7 @@ paths:
     delete:
       description: "A customized named ModelViewSet that knows how to register itself\
         \ with the Pulp API router.This viewset is discoverable by its name.\"Normal\"\
-        \ Django Models and Master/Detail models are supported by the ``register_with``\
+        \ Django Models and Master/Detail models are supported by the `register_with`\
         \ method.Attributes:    lookup_field (str): The name of the field by which\
         \ an object should be looked up, in        addition to any parent lookups\
         \ if this ViewSet is nested. Defaults to 'pk'    endpoint_name (str): The\
@@ -61414,7 +61766,7 @@ paths:
     get:
       description: "A customized named ModelViewSet that knows how to register itself\
         \ with the Pulp API router.This viewset is discoverable by its name.\"Normal\"\
-        \ Django Models and Master/Detail models are supported by the ``register_with``\
+        \ Django Models and Master/Detail models are supported by the `register_with`\
         \ method.Attributes:    lookup_field (str): The name of the field by which\
         \ an object should be looked up, in        addition to any parent lookups\
         \ if this ViewSet is nested. Defaults to 'pk'    endpoint_name (str): The\
@@ -64223,7 +64575,7 @@ paths:
     get:
       description: "A customized named ModelViewSet that knows how to register itself\
         \ with the Pulp API router.This viewset is discoverable by its name.\"Normal\"\
-        \ Django Models and Master/Detail models are supported by the ``register_with``\
+        \ Django Models and Master/Detail models are supported by the `register_with`\
         \ method.Attributes:    lookup_field (str): The name of the field by which\
         \ an object should be looked up, in        addition to any parent lookups\
         \ if this ViewSet is nested. Defaults to 'pk'    endpoint_name (str): The\
@@ -64382,7 +64734,7 @@ paths:
     delete:
       description: "A customized named ModelViewSet that knows how to register itself\
         \ with the Pulp API router.This viewset is discoverable by its name.\"Normal\"\
-        \ Django Models and Master/Detail models are supported by the ``register_with``\
+        \ Django Models and Master/Detail models are supported by the `register_with`\
         \ method.Attributes:    lookup_field (str): The name of the field by which\
         \ an object should be looked up, in        addition to any parent lookups\
         \ if this ViewSet is nested. Defaults to 'pk'    endpoint_name (str): The\
@@ -64427,7 +64779,7 @@ paths:
     get:
       description: "A customized named ModelViewSet that knows how to register itself\
         \ with the Pulp API router.This viewset is discoverable by its name.\"Normal\"\
-        \ Django Models and Master/Detail models are supported by the ``register_with``\
+        \ Django Models and Master/Detail models are supported by the `register_with`\
         \ method.Attributes:    lookup_field (str): The name of the field by which\
         \ an object should be looked up, in        addition to any parent lookups\
         \ if this ViewSet is nested. Defaults to 'pk'    endpoint_name (str): The\
@@ -64497,7 +64849,7 @@ paths:
     get:
       description: "A customized named ModelViewSet that knows how to register itself\
         \ with the Pulp API router.This viewset is discoverable by its name.\"Normal\"\
-        \ Django Models and Master/Detail models are supported by the ``register_with``\
+        \ Django Models and Master/Detail models are supported by the `register_with`\
         \ method.Attributes:    lookup_field (str): The name of the field by which\
         \ an object should be looked up, in        addition to any parent lookups\
         \ if this ViewSet is nested. Defaults to 'pk'    endpoint_name (str): The\
@@ -64628,7 +64980,7 @@ paths:
     delete:
       description: "A customized named ModelViewSet that knows how to register itself\
         \ with the Pulp API router.This viewset is discoverable by its name.\"Normal\"\
-        \ Django Models and Master/Detail models are supported by the ``register_with``\
+        \ Django Models and Master/Detail models are supported by the `register_with`\
         \ method.Attributes:    lookup_field (str): The name of the field by which\
         \ an object should be looked up, in        addition to any parent lookups\
         \ if this ViewSet is nested. Defaults to 'pk'    endpoint_name (str): The\
@@ -64673,7 +65025,7 @@ paths:
     get:
       description: "A customized named ModelViewSet that knows how to register itself\
         \ with the Pulp API router.This viewset is discoverable by its name.\"Normal\"\
-        \ Django Models and Master/Detail models are supported by the ``register_with``\
+        \ Django Models and Master/Detail models are supported by the `register_with`\
         \ method.Attributes:    lookup_field (str): The name of the field by which\
         \ an object should be looked up, in        addition to any parent lookups\
         \ if this ViewSet is nested. Defaults to 'pk'    endpoint_name (str): The\
@@ -64947,7 +65299,7 @@ paths:
     get:
       description: "A customized named ModelViewSet that knows how to register itself\
         \ with the Pulp API router.This viewset is discoverable by its name.\"Normal\"\
-        \ Django Models and Master/Detail models are supported by the ``register_with``\
+        \ Django Models and Master/Detail models are supported by the `register_with`\
         \ method.Attributes:    lookup_field (str): The name of the field by which\
         \ an object should be looked up, in        addition to any parent lookups\
         \ if this ViewSet is nested. Defaults to 'pk'    endpoint_name (str): The\
@@ -65265,7 +65617,7 @@ paths:
     get:
       description: "A customized named ModelViewSet that knows how to register itself\
         \ with the Pulp API router.This viewset is discoverable by its name.\"Normal\"\
-        \ Django Models and Master/Detail models are supported by the ``register_with``\
+        \ Django Models and Master/Detail models are supported by the `register_with`\
         \ method.Attributes:    lookup_field (str): The name of the field by which\
         \ an object should be looked up, in        addition to any parent lookups\
         \ if this ViewSet is nested. Defaults to 'pk'    endpoint_name (str): The\
@@ -65335,7 +65687,7 @@ paths:
     get:
       description: "A customized named ModelViewSet that knows how to register itself\
         \ with the Pulp API router.This viewset is discoverable by its name.\"Normal\"\
-        \ Django Models and Master/Detail models are supported by the ``register_with``\
+        \ Django Models and Master/Detail models are supported by the `register_with`\
         \ method.Attributes:    lookup_field (str): The name of the field by which\
         \ an object should be looked up, in        addition to any parent lookups\
         \ if this ViewSet is nested. Defaults to 'pk'    endpoint_name (str): The\
@@ -67530,6 +67882,190 @@ paths:
       summary: Get package metadata
       tags:
       - "Pypi: Metadata"
+  /pypi/{pulp_domain}/{path}/rss/packages.xml:
+    get:
+      description: View for PyPI-compatible RSS feeds on a distribution.
+      operationId: pypi_rss_packages.xml_packages
+      parameters:
+      - description: List of profilers to use on tasks.
+        explode: false
+        in: header
+        name: X-Task-Diagnostics
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: simple
+      - explode: false
+        in: path
+        name: path
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: pulp_domain
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-isDomain: true
+      - description: A list of fields to include in the response.
+        explode: true
+        in: query
+        name: fields
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: A list of fields to exclude from the response.
+        explode: true
+        in: query
+        name: exclude_fields
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      responses:
+        "200":
+          description: No response body
+      security:
+      - basicAuth: []
+      - cookieAuth: []
+      summary: Get newest packages RSS feed
+      tags:
+      - "Pypi: Packages.Xml"
+  /pypi/{pulp_domain}/{path}/rss/project/{package}/releases.xml:
+    get:
+      description: View for PyPI-compatible RSS feeds on a distribution.
+      operationId: pypi_rss_project_releases.xml_project_releases
+      parameters:
+      - description: List of profilers to use on tasks.
+        explode: false
+        in: header
+        name: X-Task-Diagnostics
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: simple
+      - explode: false
+        in: path
+        name: package
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: path
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: pulp_domain
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-isDomain: true
+      - description: A list of fields to include in the response.
+        explode: true
+        in: query
+        name: fields
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: A list of fields to exclude from the response.
+        explode: true
+        in: query
+        name: exclude_fields
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      responses:
+        "200":
+          description: No response body
+      security:
+      - basicAuth: []
+      - cookieAuth: []
+      summary: Get project releases RSS feed
+      tags:
+      - "Pypi: Project Releases.Xml"
+  /pypi/{pulp_domain}/{path}/rss/updates.xml:
+    get:
+      description: View for PyPI-compatible RSS feeds on a distribution.
+      operationId: pypi_rss_updates.xml_updates
+      parameters:
+      - description: List of profilers to use on tasks.
+        explode: false
+        in: header
+        name: X-Task-Diagnostics
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: simple
+      - explode: false
+        in: path
+        name: path
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: pulp_domain
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-isDomain: true
+      - description: A list of fields to include in the response.
+        explode: true
+        in: query
+        name: fields
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: A list of fields to exclude from the response.
+        explode: true
+        in: query
+        name: exclude_fields
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      responses:
+        "200":
+          description: No response body
+      security:
+      - basicAuth: []
+      - cookieAuth: []
+      summary: Get latest updates RSS feed
+      tags:
+      - "Pypi: Updates.Xml"
   /pypi/{pulp_domain}/{path}/simple/:
     get:
       description: View for the PyPI simple API.
@@ -68050,9 +68586,9 @@ components:
     Artifact:
       description: "Base serializer for use with [pulpcore.app.models.Model][]This\
         \ ensures that all Serializers provide values for the 'pulp_href` field.The\
-        \ class provides a default for the ``ref_name`` attribute in theModelSerializers's\
-        \ ``Meta`` class. This ensures that the OpenAPI definitionsof plugins are\
-        \ namespaced properly."
+        \ class provides a default for the `ref_name` attribute in theModelSerializers's\
+        \ `Meta` class. This ensures that the OpenAPI definitionsof plugins are namespaced\
+        \ properly."
       properties:
         file:
           description: The stored file.
@@ -68099,43 +68635,29 @@ components:
       description: A serializer for ArtifactDistribution.
       example:
         base_path: base_path
-        content_guard_prn: content_guard_prn
-        no_content_change_since: no_content_change_since
         repository_version: https://openapi-generator.tech
-        name: name
         pulp_last_updated: 2000-01-23T04:56:07.000+00:00
-        prn: prn
-        pulp_href: https://openapi-generator.tech
-        content_guard: https://openapi-generator.tech
-        hidden: false
         pulp_created: 2000-01-23T04:56:07.000+00:00
+        content_guard_prn: content_guard_prn
+        prn: prn
         pulp_labels:
           key: pulp_labels
+        content_guard: https://openapi-generator.tech
+        pulp_href: https://openapi-generator.tech
+        name: name
+        hidden: false
         base_url: base_url
+        no_content_change_since: no_content_change_since
       properties:
         base_path:
           description: The base (relative) path component of the published url. Avoid
             paths that                     overlap with other distribution base paths
             (e.g. "foo" and "foo/bar")
           type: string
-        content_guard_prn:
-          description: The Pulp Resource Name (PRN) of the associated optional content
-            guard.
-          readOnly: true
-          type: string
-        no_content_change_since:
-          description: "Timestamp since when the distributed content served by this\
-            \ distribution has not changed. If equals to `null`, no guarantee is provided\
-            \ about content changes."
-          readOnly: true
-          type: string
         repository_version:
           description: RepositoryVersion to be served
           format: uri
           nullable: true
-          type: string
-        name:
-          description: "A unique name. Ex, `rawhide` and `stable`."
           type: string
         pulp_last_updated:
           description: "Timestamp of the last time this resource was updated. Note:\
@@ -68144,26 +68666,18 @@ components:
           format: date-time
           readOnly: true
           type: string
-        prn:
-          description: The Pulp Resource Name (PRN).
-          readOnly: true
-          type: string
-        pulp_href:
-          format: uri
-          readOnly: true
-          type: string
-        content_guard:
-          description: An optional content-guard.
-          format: uri
-          nullable: true
-          type: string
-        hidden:
-          default: false
-          description: Whether this distribution should be shown in the content app.
-          type: boolean
         pulp_created:
           description: Timestamp of creation.
           format: date-time
+          readOnly: true
+          type: string
+        content_guard_prn:
+          description: The Pulp Resource Name (PRN) of the associated optional content
+            guard.
+          readOnly: true
+          type: string
+        prn:
+          description: The Pulp Resource Name (PRN).
           readOnly: true
           type: string
         pulp_labels:
@@ -68171,8 +68685,30 @@ components:
             nullable: true
             type: string
           type: object
+        content_guard:
+          description: An optional content-guard.
+          format: uri
+          nullable: true
+          type: string
+        pulp_href:
+          format: uri
+          readOnly: true
+          type: string
+        name:
+          description: "A unique name. Ex, `rawhide` and `stable`."
+          type: string
+        hidden:
+          default: false
+          description: Whether this distribution should be shown in the content app.
+          type: boolean
         base_url:
           description: The URL for accessing the publication as defined by this distribution.
+          readOnly: true
+          type: string
+        no_content_change_since:
+          description: "Timestamp since when the distributed content served by this\
+            \ distribution has not changed. If equals to `null`, no guarantee is provided\
+            \ about content changes."
           readOnly: true
           type: string
       required:
@@ -68182,9 +68718,9 @@ components:
     ArtifactResponse:
       description: "Base serializer for use with [pulpcore.app.models.Model][]This\
         \ ensures that all Serializers provide values for the 'pulp_href` field.The\
-        \ class provides a default for the ``ref_name`` attribute in theModelSerializers's\
-        \ ``Meta`` class. This ensures that the OpenAPI definitionsof plugins are\
-        \ namespaced properly."
+        \ class provides a default for the `ref_name` attribute in theModelSerializers's\
+        \ `Meta` class. This ensures that the OpenAPI definitionsof plugins are namespaced\
+        \ properly."
       example:
         pulp_href: https://openapi-generator.tech
         prn: prn
@@ -68401,9 +68937,9 @@ components:
           type: string
         mirror:
           default: false
-          description: "If ``True``, synchronization will remove all content that\
-            \ is not present in the remote repository. If ``False``, sync will be\
-            \ additive only."
+          description: "If `True`, synchronization will remove all content that is\
+            \ not present in the remote repository. If `False`, sync will be additive\
+            \ only."
           type: boolean
         signed_only:
           default: false
@@ -68984,6 +69520,7 @@ components:
         storage_settings: "{}"
         redirect_to_object_storage: true
         hide_guarded_distributions: false
+        default_content_guard: https://openapi-generator.tech
       properties:
         name:
           description: A name for this domain.
@@ -69021,6 +69558,14 @@ components:
           description: Boolean to hide distributions with a content guard in the content
             app.
           type: boolean
+        default_content_guard:
+          description: "An optional content-guard that is automatically assigned to\
+            \ new distributions created within this domain when they do not specify\
+            \ their own content-guard. To apply multiple guards by default, use a\
+            \ composite content-guard."
+          format: uri
+          nullable: true
+          type: string
       required:
       - name
       - storage_class
@@ -69063,6 +69608,8 @@ components:
         storage_settings: "{}"
         redirect_to_object_storage: true
         hide_guarded_distributions: false
+        default_content_guard: https://openapi-generator.tech
+        default_content_guard_prn: default_content_guard_prn
       properties:
         pulp_href:
           format: uri
@@ -69118,6 +69665,18 @@ components:
           description: Boolean to hide distributions with a content guard in the content
             app.
           type: boolean
+        default_content_guard:
+          description: "An optional content-guard that is automatically assigned to\
+            \ new distributions created within this domain when they do not specify\
+            \ their own content-guard. To apply multiple guards by default, use a\
+            \ composite content-guard."
+          format: uri
+          nullable: true
+          type: string
+        default_content_guard_prn:
+          description: The Pulp Resource Name (PRN) of the domain's default content-guard.
+          readOnly: true
+          type: string
       required:
       - name
       - storage_class
@@ -69300,9 +69859,9 @@ components:
           type: string
         mirror:
           default: false
-          description: "If ``True``, synchronization will remove all content that\
-            \ is not present in the remote repository. If ``False``, sync will be\
-            \ additive only."
+          description: "If `True`, synchronization will remove all content that is\
+            \ not present in the remote repository. If `False`, sync will be additive\
+            \ only."
           type: boolean
         optimize:
           default: true
@@ -69638,9 +70197,9 @@ components:
     GroupProgressReportResponse:
       description: "Base serializer for use with [pulpcore.app.models.Model][]This\
         \ ensures that all Serializers provide values for the 'pulp_href` field.The\
-        \ class provides a default for the ``ref_name`` attribute in theModelSerializers's\
-        \ ``Meta`` class. This ensures that the OpenAPI definitionsof plugins are\
-        \ namespaced properly."
+        \ class provides a default for the `ref_name` attribute in theModelSerializers's\
+        \ `Meta` class. This ensures that the OpenAPI definitionsof plugins are namespaced\
+        \ properly."
       example:
         message: message
         code: code
@@ -70318,9 +70877,9 @@ components:
     MinimalTaskResponse:
       description: "Base serializer for use with [pulpcore.app.models.Model][]This\
         \ ensures that all Serializers provide values for the 'pulp_href` field.The\
-        \ class provides a default for the ``ref_name`` attribute in theModelSerializers's\
-        \ ``Meta`` class. This ensures that the OpenAPI definitionsof plugins are\
-        \ namespaced properly."
+        \ class provides a default for the `ref_name` attribute in theModelSerializers's\
+        \ `Meta` class. This ensures that the OpenAPI definitionsof plugins are namespaced\
+        \ properly."
       example:
         pulp_href: https://openapi-generator.tech
         prn: prn
@@ -70394,9 +70953,9 @@ components:
     MultipleArtifactContentResponse:
       description: "Base serializer for use with [pulpcore.app.models.Model][]This\
         \ ensures that all Serializers provide values for the 'pulp_href` field.The\
-        \ class provides a default for the ``ref_name`` attribute in theModelSerializers's\
-        \ ``Meta`` class. This ensures that the OpenAPI definitionsof plugins are\
-        \ namespaced properly."
+        \ class provides a default for the `ref_name` attribute in theModelSerializers's\
+        \ `Meta` class. This ensures that the OpenAPI definitionsof plugins are namespaced\
+        \ properly."
       example:
         pulp_href: https://openapi-generator.tech
         prn: prn
@@ -70461,9 +71020,9 @@ components:
     NestedOpenPGPPublicSubkey:
       description: "Base serializer for use with [pulpcore.app.models.Model][]This\
         \ ensures that all Serializers provide values for the 'pulp_href` field.The\
-        \ class provides a default for the ``ref_name`` attribute in theModelSerializers's\
-        \ ``Meta`` class. This ensures that the OpenAPI definitionsof plugins are\
-        \ namespaced properly."
+        \ class provides a default for the `ref_name` attribute in theModelSerializers's\
+        \ `Meta` class. This ensures that the OpenAPI definitionsof plugins are namespaced\
+        \ properly."
       properties:
         fingerprint:
           maxLength: 64
@@ -70479,9 +71038,9 @@ components:
     NestedOpenPGPPublicSubkeyResponse:
       description: "Base serializer for use with [pulpcore.app.models.Model][]This\
         \ ensures that all Serializers provide values for the 'pulp_href` field.The\
-        \ class provides a default for the ``ref_name`` attribute in theModelSerializers's\
-        \ ``Meta`` class. This ensures that the OpenAPI definitionsof plugins are\
-        \ namespaced properly."
+        \ class provides a default for the `ref_name` attribute in theModelSerializers's\
+        \ `Meta` class. This ensures that the OpenAPI definitionsof plugins are namespaced\
+        \ properly."
       example:
         fingerprint: fingerprint
         created: 2000-01-23T04:56:07.000+00:00
@@ -70519,9 +71078,9 @@ components:
     NestedOpenPGPSignature:
       description: "Base serializer for use with [pulpcore.app.models.Model][]This\
         \ ensures that all Serializers provide values for the 'pulp_href` field.The\
-        \ class provides a default for the ``ref_name`` attribute in theModelSerializers's\
-        \ ``Meta`` class. This ensures that the OpenAPI definitionsof plugins are\
-        \ namespaced properly."
+        \ class provides a default for the `ref_name` attribute in theModelSerializers's\
+        \ `Meta` class. This ensures that the OpenAPI definitionsof plugins are namespaced\
+        \ properly."
       properties:
         issuer:
           maxLength: 16
@@ -70550,9 +71109,9 @@ components:
     NestedOpenPGPSignatureResponse:
       description: "Base serializer for use with [pulpcore.app.models.Model][]This\
         \ ensures that all Serializers provide values for the 'pulp_href` field.The\
-        \ class provides a default for the ``ref_name`` attribute in theModelSerializers's\
-        \ ``Meta`` class. This ensures that the OpenAPI definitionsof plugins are\
-        \ namespaced properly."
+        \ class provides a default for the `ref_name` attribute in theModelSerializers's\
+        \ `Meta` class. This ensures that the OpenAPI definitionsof plugins are namespaced\
+        \ properly."
       example:
         issuer: issuer
         created: 2000-01-23T04:56:07.000+00:00
@@ -70590,9 +71149,9 @@ components:
     NestedOpenPGPUserAttribute:
       description: "Base serializer for use with [pulpcore.app.models.Model][]This\
         \ ensures that all Serializers provide values for the 'pulp_href` field.The\
-        \ class provides a default for the ``ref_name`` attribute in theModelSerializers's\
-        \ ``Meta`` class. This ensures that the OpenAPI definitionsof plugins are\
-        \ namespaced properly."
+        \ class provides a default for the `ref_name` attribute in theModelSerializers's\
+        \ `Meta` class. This ensures that the OpenAPI definitionsof plugins are namespaced\
+        \ properly."
       properties:
         sha256:
           maxLength: 128
@@ -70604,9 +71163,9 @@ components:
     NestedOpenPGPUserAttributeResponse:
       description: "Base serializer for use with [pulpcore.app.models.Model][]This\
         \ ensures that all Serializers provide values for the 'pulp_href` field.The\
-        \ class provides a default for the ``ref_name`` attribute in theModelSerializers's\
-        \ ``Meta`` class. This ensures that the OpenAPI definitionsof plugins are\
-        \ namespaced properly."
+        \ class provides a default for the `ref_name` attribute in theModelSerializers's\
+        \ `Meta` class. This ensures that the OpenAPI definitionsof plugins are namespaced\
+        \ properly."
       example:
         sha256: sha256
         signatures:
@@ -70639,9 +71198,9 @@ components:
     NestedOpenPGPUserID:
       description: "Base serializer for use with [pulpcore.app.models.Model][]This\
         \ ensures that all Serializers provide values for the 'pulp_href` field.The\
-        \ class provides a default for the ``ref_name`` attribute in theModelSerializers's\
-        \ ``Meta`` class. This ensures that the OpenAPI definitionsof plugins are\
-        \ namespaced properly."
+        \ class provides a default for the `ref_name` attribute in theModelSerializers's\
+        \ `Meta` class. This ensures that the OpenAPI definitionsof plugins are namespaced\
+        \ properly."
       properties:
         user_id:
           minLength: 1
@@ -70652,9 +71211,9 @@ components:
     NestedOpenPGPUserIDResponse:
       description: "Base serializer for use with [pulpcore.app.models.Model][]This\
         \ ensures that all Serializers provide values for the 'pulp_href` field.The\
-        \ class provides a default for the ``ref_name`` attribute in theModelSerializers's\
-        \ ``Meta`` class. This ensures that the OpenAPI definitionsof plugins are\
-        \ namespaced properly."
+        \ class provides a default for the `ref_name` attribute in theModelSerializers's\
+        \ `Meta` class. This ensures that the OpenAPI definitionsof plugins are namespaced\
+        \ properly."
       example:
         user_id: user_id
         signatures:
@@ -70685,8 +71244,8 @@ components:
       type: object
     NestedRole:
       description: Serializer to add/remove object roles to/from users/groups.This
-        is used in conjunction with ``pulpcore.app.viewsets.base.RolesMixin`` and
-        requires theunderlying object to be passed as ``content_object`` in the context.
+        is used in conjunction with `pulpcore.app.viewsets.base.RolesMixin` and requires
+        theunderlying object to be passed as `content_object` in the context.
       example:
         users:
         - users
@@ -70718,8 +71277,8 @@ components:
       type: object
     NestedRoleResponse:
       description: Serializer to add/remove object roles to/from users/groups.This
-        is used in conjunction with ``pulpcore.app.viewsets.base.RolesMixin`` and
-        requires theunderlying object to be passed as ``content_object`` in the context.
+        is used in conjunction with `pulpcore.app.viewsets.base.RolesMixin` and requires
+        theunderlying object to be passed as `content_object` in the context.
       example:
         users:
         - users
@@ -71022,9 +71581,9 @@ components:
     OpenPGPKeyring:
       description: "Base serializer for use with [pulpcore.app.models.Model][]This\
         \ ensures that all Serializers provide values for the 'pulp_href` field.The\
-        \ class provides a default for the ``ref_name`` attribute in theModelSerializers's\
-        \ ``Meta`` class. This ensures that the OpenAPI definitionsof plugins are\
-        \ namespaced properly."
+        \ class provides a default for the `ref_name` attribute in theModelSerializers's\
+        \ `Meta` class. This ensures that the OpenAPI definitionsof plugins are namespaced\
+        \ properly."
       example:
         pulp_labels:
           key: pulp_labels
@@ -71073,9 +71632,9 @@ components:
     OpenPGPKeyringResponse:
       description: "Base serializer for use with [pulpcore.app.models.Model][]This\
         \ ensures that all Serializers provide values for the 'pulp_href` field.The\
-        \ class provides a default for the ``ref_name`` attribute in theModelSerializers's\
-        \ ``Meta`` class. This ensures that the OpenAPI definitionsof plugins are\
-        \ namespaced properly."
+        \ class provides a default for the `ref_name` attribute in theModelSerializers's\
+        \ `Meta` class. This ensures that the OpenAPI definitionsof plugins are namespaced\
+        \ properly."
       example:
         pulp_href: https://openapi-generator.tech
         prn: prn
@@ -71370,9 +71929,9 @@ components:
     OpenPGPPublicSubkeyResponse:
       description: "Base serializer for use with [pulpcore.app.models.Model][]This\
         \ ensures that all Serializers provide values for the 'pulp_href` field.The\
-        \ class provides a default for the ``ref_name`` attribute in theModelSerializers's\
-        \ ``Meta`` class. This ensures that the OpenAPI definitionsof plugins are\
-        \ namespaced properly."
+        \ class provides a default for the `ref_name` attribute in theModelSerializers's\
+        \ `Meta` class. This ensures that the OpenAPI definitionsof plugins are namespaced\
+        \ properly."
       example:
         pulp_href: https://openapi-generator.tech
         prn: prn
@@ -71453,9 +72012,9 @@ components:
     OpenPGPSignatureResponse:
       description: "Base serializer for use with [pulpcore.app.models.Model][]This\
         \ ensures that all Serializers provide values for the 'pulp_href` field.The\
-        \ class provides a default for the ``ref_name`` attribute in theModelSerializers's\
-        \ ``Meta`` class. This ensures that the OpenAPI definitionsof plugins are\
-        \ namespaced properly."
+        \ class provides a default for the `ref_name` attribute in theModelSerializers's\
+        \ `Meta` class. This ensures that the OpenAPI definitionsof plugins are namespaced\
+        \ properly."
       example:
         pulp_href: https://openapi-generator.tech
         prn: prn
@@ -71536,9 +72095,9 @@ components:
     OpenPGPUserAttributeResponse:
       description: "Base serializer for use with [pulpcore.app.models.Model][]This\
         \ ensures that all Serializers provide values for the 'pulp_href` field.The\
-        \ class provides a default for the ``ref_name`` attribute in theModelSerializers's\
-        \ ``Meta`` class. This ensures that the OpenAPI definitionsof plugins are\
-        \ namespaced properly."
+        \ class provides a default for the `ref_name` attribute in theModelSerializers's\
+        \ `Meta` class. This ensures that the OpenAPI definitionsof plugins are namespaced\
+        \ properly."
       example:
         pulp_href: https://openapi-generator.tech
         prn: prn
@@ -71614,9 +72173,9 @@ components:
     OpenPGPUserIDResponse:
       description: "Base serializer for use with [pulpcore.app.models.Model][]This\
         \ ensures that all Serializers provide values for the 'pulp_href` field.The\
-        \ class provides a default for the ``ref_name`` attribute in theModelSerializers's\
-        \ ``Meta`` class. This ensures that the OpenAPI definitionsof plugins are\
-        \ namespaced properly."
+        \ class provides a default for the `ref_name` attribute in theModelSerializers's\
+        \ `Meta` class. This ensures that the OpenAPI definitionsof plugins are namespaced\
+        \ properly."
       example:
         pulp_href: https://openapi-generator.tech
         prn: prn
@@ -71893,33 +72452,33 @@ components:
         previous: http://api.example.org/accounts/?offset=200&limit=100
         results:
         - base_path: base_path
-          content_guard_prn: content_guard_prn
-          no_content_change_since: no_content_change_since
           repository_version: https://openapi-generator.tech
-          name: name
           pulp_last_updated: 2000-01-23T04:56:07.000+00:00
-          prn: prn
-          pulp_href: https://openapi-generator.tech
-          content_guard: https://openapi-generator.tech
-          hidden: false
           pulp_created: 2000-01-23T04:56:07.000+00:00
+          content_guard_prn: content_guard_prn
+          prn: prn
           pulp_labels:
             key: pulp_labels
+          content_guard: https://openapi-generator.tech
+          pulp_href: https://openapi-generator.tech
+          name: name
+          hidden: false
           base_url: base_url
+          no_content_change_since: no_content_change_since
         - base_path: base_path
-          content_guard_prn: content_guard_prn
-          no_content_change_since: no_content_change_since
           repository_version: https://openapi-generator.tech
-          name: name
           pulp_last_updated: 2000-01-23T04:56:07.000+00:00
-          prn: prn
-          pulp_href: https://openapi-generator.tech
-          content_guard: https://openapi-generator.tech
-          hidden: false
           pulp_created: 2000-01-23T04:56:07.000+00:00
+          content_guard_prn: content_guard_prn
+          prn: prn
           pulp_labels:
             key: pulp_labels
+          content_guard: https://openapi-generator.tech
+          pulp_href: https://openapi-generator.tech
+          name: name
+          hidden: false
           base_url: base_url
+          no_content_change_since: no_content_change_since
       properties:
         count:
           example: 123
@@ -72430,6 +72989,8 @@ components:
           storage_settings: "{}"
           redirect_to_object_storage: true
           hide_guarded_distributions: false
+          default_content_guard: https://openapi-generator.tech
+          default_content_guard_prn: default_content_guard_prn
         - pulp_href: https://openapi-generator.tech
           prn: prn
           pulp_created: 2000-01-23T04:56:07.000+00:00
@@ -72442,6 +73003,8 @@ components:
           storage_settings: "{}"
           redirect_to_object_storage: true
           hide_guarded_distributions: false
+          default_content_guard: https://openapi-generator.tech
+          default_content_guard_prn: default_content_guard_prn
       properties:
         count:
           example: 123
@@ -74781,38 +75344,38 @@ components:
         previous: http://api.example.org/accounts/?offset=200&limit=100
         results:
         - base_path: base_path
-          content_guard_prn: content_guard_prn
-          no_content_change_since: no_content_change_since
           repository_version: https://openapi-generator.tech
-          name: name
           pulp_last_updated: 2000-01-23T04:56:07.000+00:00
-          prn: prn
-          pulp_href: https://openapi-generator.tech
-          content_guard: https://openapi-generator.tech
-          hidden: false
-          pulp_created: 2000-01-23T04:56:07.000+00:00
           repository: https://openapi-generator.tech
+          pulp_created: 2000-01-23T04:56:07.000+00:00
+          content_guard_prn: content_guard_prn
+          prn: prn
           pulp_labels:
             key: pulp_labels
+          content_guard: https://openapi-generator.tech
+          pulp_href: https://openapi-generator.tech
+          name: name
+          hidden: false
+          no_content_change_since: no_content_change_since
           registry_path: registry_path
           remote: https://openapi-generator.tech
           namespace: https://openapi-generator.tech
           private: true
           description: description
         - base_path: base_path
-          content_guard_prn: content_guard_prn
-          no_content_change_since: no_content_change_since
           repository_version: https://openapi-generator.tech
-          name: name
           pulp_last_updated: 2000-01-23T04:56:07.000+00:00
-          prn: prn
-          pulp_href: https://openapi-generator.tech
-          content_guard: https://openapi-generator.tech
-          hidden: false
-          pulp_created: 2000-01-23T04:56:07.000+00:00
           repository: https://openapi-generator.tech
+          pulp_created: 2000-01-23T04:56:07.000+00:00
+          content_guard_prn: content_guard_prn
+          prn: prn
           pulp_labels:
             key: pulp_labels
+          content_guard: https://openapi-generator.tech
+          pulp_href: https://openapi-generator.tech
+          name: name
+          hidden: false
+          no_content_change_since: no_content_change_since
           registry_path: registry_path
           remote: https://openapi-generator.tech
           namespace: https://openapi-generator.tech
@@ -74889,19 +75452,19 @@ components:
         previous: http://api.example.org/accounts/?offset=200&limit=100
         results:
         - base_path: base_path
-          content_guard_prn: content_guard_prn
-          no_content_change_since: no_content_change_since
           repository_version: https://openapi-generator.tech
-          name: name
           pulp_last_updated: 2000-01-23T04:56:07.000+00:00
-          prn: prn
-          pulp_href: https://openapi-generator.tech
-          content_guard: https://openapi-generator.tech
-          hidden: false
-          pulp_created: 2000-01-23T04:56:07.000+00:00
           repository: https://openapi-generator.tech
+          pulp_created: 2000-01-23T04:56:07.000+00:00
+          content_guard_prn: content_guard_prn
+          prn: prn
           pulp_labels:
             key: pulp_labels
+          content_guard: https://openapi-generator.tech
+          pulp_href: https://openapi-generator.tech
+          name: name
+          hidden: false
+          no_content_change_since: no_content_change_since
           remote: https://openapi-generator.tech
           distributions:
           - https://openapi-generator.tech
@@ -74910,19 +75473,19 @@ components:
           private: true
           description: description
         - base_path: base_path
-          content_guard_prn: content_guard_prn
-          no_content_change_since: no_content_change_since
           repository_version: https://openapi-generator.tech
-          name: name
           pulp_last_updated: 2000-01-23T04:56:07.000+00:00
-          prn: prn
-          pulp_href: https://openapi-generator.tech
-          content_guard: https://openapi-generator.tech
-          hidden: false
-          pulp_created: 2000-01-23T04:56:07.000+00:00
           repository: https://openapi-generator.tech
+          pulp_created: 2000-01-23T04:56:07.000+00:00
+          content_guard_prn: content_guard_prn
+          prn: prn
           pulp_labels:
             key: pulp_labels
+          content_guard: https://openapi-generator.tech
+          pulp_href: https://openapi-generator.tech
+          name: name
+          hidden: false
+          no_content_change_since: no_content_change_since
           remote: https://openapi-generator.tech
           distributions:
           - https://openapi-generator.tech
@@ -75054,32 +75617,32 @@ components:
         next: http://api.example.org/accounts/?offset=400&limit=100
         previous: http://api.example.org/accounts/?offset=200&limit=100
         results:
-        - versions_href: https://openapi-generator.tech
-          latest_version_href: https://openapi-generator.tech
-          description: description
+        - latest_version_href: https://openapi-generator.tech
           retain_repo_versions: 1
-          name: name
-          pulp_last_updated: 2000-01-23T04:56:07.000+00:00
-          prn: prn
-          pulp_href: https://openapi-generator.tech
-          retain_checkpoints: 1
-          pulp_created: 2000-01-23T04:56:07.000+00:00
           manifest_signing_service: https://openapi-generator.tech
+          pulp_last_updated: 2000-01-23T04:56:07.000+00:00
+          pulp_created: 2000-01-23T04:56:07.000+00:00
           pulp_labels:
             key: pulp_labels
-        - versions_href: https://openapi-generator.tech
-          latest_version_href: https://openapi-generator.tech
-          description: description
-          retain_repo_versions: 1
-          name: name
-          pulp_last_updated: 2000-01-23T04:56:07.000+00:00
           prn: prn
-          pulp_href: https://openapi-generator.tech
+          description: description
           retain_checkpoints: 1
-          pulp_created: 2000-01-23T04:56:07.000+00:00
+          versions_href: https://openapi-generator.tech
+          pulp_href: https://openapi-generator.tech
+          name: name
+        - latest_version_href: https://openapi-generator.tech
+          retain_repo_versions: 1
           manifest_signing_service: https://openapi-generator.tech
+          pulp_last_updated: 2000-01-23T04:56:07.000+00:00
+          pulp_created: 2000-01-23T04:56:07.000+00:00
           pulp_labels:
             key: pulp_labels
+          prn: prn
+          description: description
+          retain_checkpoints: 1
+          versions_href: https://openapi-generator.tech
+          pulp_href: https://openapi-generator.tech
+          name: name
       properties:
         count:
           example: 123
@@ -76295,6 +76858,52 @@ components:
         results:
           items:
             $ref: "#/components/schemas/maven.MavenDistributionResponse"
+          type: array
+      required:
+      - count
+      - results
+      type: object
+    Paginatedmaven.MavenIndexPageResponseList:
+      example:
+        count: 123
+        next: http://api.example.org/accounts/?offset=400&limit=100
+        previous: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+        - pulp_href: https://openapi-generator.tech
+          prn: prn
+          pulp_created: 2000-01-23T04:56:07.000+00:00
+          pulp_last_updated: 2000-01-23T04:56:07.000+00:00
+          pulp_labels:
+            key: pulp_labels
+          vuln_report: https://openapi-generator.tech
+          path: path
+          sha256: sha256
+        - pulp_href: https://openapi-generator.tech
+          prn: prn
+          pulp_created: 2000-01-23T04:56:07.000+00:00
+          pulp_last_updated: 2000-01-23T04:56:07.000+00:00
+          pulp_labels:
+            key: pulp_labels
+          vuln_report: https://openapi-generator.tech
+          path: path
+          sha256: sha256
+      properties:
+        count:
+          example: 123
+          type: integer
+        next:
+          example: http://api.example.org/accounts/?offset=400&limit=100
+          format: uri
+          nullable: true
+          type: string
+        previous:
+          example: http://api.example.org/accounts/?offset=200&limit=100
+          format: uri
+          nullable: true
+          type: string
+        results:
+          items:
+            $ref: "#/components/schemas/maven.MavenIndexPageResponse"
           type: array
       required:
       - count
@@ -78928,6 +79537,7 @@ components:
         storage_settings: "{}"
         redirect_to_object_storage: true
         hide_guarded_distributions: false
+        default_content_guard: https://openapi-generator.tech
       properties:
         name:
           description: A name for this domain.
@@ -78965,6 +79575,14 @@ components:
           description: Boolean to hide distributions with a content guard in the content
             app.
           type: boolean
+        default_content_guard:
+          description: "An optional content-guard that is automatically assigned to\
+            \ new distributions created within this domain when they do not specify\
+            \ their own content-guard. To apply multiple guards by default, use a\
+            \ composite content-guard."
+          format: uri
+          nullable: true
+          type: string
       type: object
     PatchedFilesystemExporter:
       description: Serializer for FilesystemExporters.
@@ -79132,9 +79750,9 @@ components:
     PatchedOpenPGPKeyring:
       description: "Base serializer for use with [pulpcore.app.models.Model][]This\
         \ ensures that all Serializers provide values for the 'pulp_href` field.The\
-        \ class provides a default for the ``ref_name`` attribute in theModelSerializers's\
-        \ ``Meta`` class. This ensures that the OpenAPI definitionsof plugins are\
-        \ namespaced properly."
+        \ class provides a default for the `ref_name` attribute in theModelSerializers's\
+        \ `Meta` class. This ensures that the OpenAPI definitionsof plugins are namespaced\
+        \ properly."
       example:
         pulp_labels:
           key: pulp_labels
@@ -79428,7 +80046,7 @@ components:
           minLength: 1
           type: string
         password:
-          description: Users password. Set to ``null`` to disable password authentication.
+          description: Users password. Set to `null` to disable password authentication.
           minLength: 1
           nullable: true
           type: string
@@ -79504,19 +80122,6 @@ components:
           format: uri
           nullable: true
           type: string
-        name:
-          description: "A unique name. Ex, `rawhide` and `stable`."
-          minLength: 1
-          type: string
-        content_guard:
-          description: "An optional content-guard. If none is specified, a default\
-            \ one will be used."
-          format: uri
-          type: string
-        hidden:
-          default: false
-          description: Whether this distribution should be shown in the content app.
-          type: boolean
         repository:
           description: The latest RepositoryVersion for this Repository will be served.
           format: uri
@@ -79527,6 +80132,19 @@ components:
             nullable: true
             type: string
           type: object
+        content_guard:
+          description: "An optional content-guard. If none is specified, a default\
+            \ one will be used."
+          format: uri
+          type: string
+        name:
+          description: "A unique name. Ex, `rawhide` and `stable`."
+          minLength: 1
+          type: string
+        hidden:
+          default: false
+          description: Whether this distribution should be shown in the content app.
+          type: boolean
         private:
           description: Restrict pull access to explicitly authorized users. Defaults
             to unrestricted pull access.
@@ -79552,19 +80170,6 @@ components:
           format: uri
           nullable: true
           type: string
-        name:
-          description: "A unique name. Ex, `rawhide` and `stable`."
-          minLength: 1
-          type: string
-        content_guard:
-          description: "An optional content-guard. If none is specified, a default\
-            \ one will be used."
-          format: uri
-          type: string
-        hidden:
-          default: false
-          description: Whether this distribution should be shown in the content app.
-          type: boolean
         repository:
           description: The latest RepositoryVersion for this Repository will be served.
           format: uri
@@ -79575,6 +80180,19 @@ components:
             nullable: true
             type: string
           type: object
+        content_guard:
+          description: "An optional content-guard. If none is specified, a default\
+            \ one will be used."
+          format: uri
+          type: string
+        name:
+          description: "A unique name. Ex, `rawhide` and `stable`."
+          minLength: 1
+          type: string
+        hidden:
+          default: false
+          description: Whether this distribution should be shown in the content app.
+          type: boolean
         remote:
           description: Remote that can be used to fetch content when using pull-through
             caching.
@@ -79746,25 +80364,9 @@ components:
     Patchedcontainer.ContainerPushRepository:
       description: Serializer for Container Push Repositories.
       properties:
-        description:
-          description: An optional description.
-          minLength: 1
-          nullable: true
-          type: string
         retain_repo_versions:
           description: Retain X versions of the repository. Default is null which
             retains all versions.
-          format: int64
-          minimum: 1
-          nullable: true
-          type: integer
-        name:
-          description: A unique name for this repository.
-          minLength: 1
-          type: string
-        retain_checkpoints:
-          description: Retain X checkpoint publications for the repository. Default
-            is null which retains all checkpoints.
           format: int64
           minimum: 1
           nullable: true
@@ -79779,6 +80381,22 @@ components:
             nullable: true
             type: string
           type: object
+        description:
+          description: An optional description.
+          minLength: 1
+          nullable: true
+          type: string
+        retain_checkpoints:
+          description: Retain X checkpoint publications for the repository. Default
+            is null which retains all checkpoints.
+          format: int64
+          minimum: 1
+          nullable: true
+          type: integer
+        name:
+          description: A unique name for this repository.
+          minLength: 1
+          type: string
       type: object
     Patchedcontainer.ContainerRemote:
       description: A Serializer for ContainerRemote.
@@ -81917,9 +82535,9 @@ components:
     ProgressReportResponse:
       description: "Base serializer for use with [pulpcore.app.models.Model][]This\
         \ ensures that all Serializers provide values for the 'pulp_href` field.The\
-        \ class provides a default for the ``ref_name`` attribute in theModelSerializers's\
-        \ ``Meta`` class. This ensures that the OpenAPI definitionsof plugins are\
-        \ namespaced properly."
+        \ class provides a default for the `ref_name` attribute in theModelSerializers's\
+        \ `Meta` class. This ensures that the OpenAPI definitionsof plugins are namespaced\
+        \ properly."
       example:
         message: message
         code: code
@@ -81998,9 +82616,9 @@ components:
     PublicationResponse:
       description: "Base serializer for use with [pulpcore.app.models.Model][]This\
         \ ensures that all Serializers provide values for the 'pulp_href` field.The\
-        \ class provides a default for the ``ref_name`` attribute in theModelSerializers's\
-        \ ``Meta`` class. This ensures that the OpenAPI definitionsof plugins are\
-        \ namespaced properly."
+        \ class provides a default for the `ref_name` attribute in theModelSerializers's\
+        \ `Meta` class. This ensures that the OpenAPI definitionsof plugins are namespaced\
+        \ properly."
       example:
         pulp_href: https://openapi-generator.tech
         prn: prn
@@ -83002,9 +83620,9 @@ components:
     RepositoryAddRemoveContent:
       description: "Base serializer for use with [pulpcore.app.models.Model][]This\
         \ ensures that all Serializers provide values for the 'pulp_href` field.The\
-        \ class provides a default for the ``ref_name`` attribute in theModelSerializers's\
-        \ ``Meta`` class. This ensures that the OpenAPI definitionsof plugins are\
-        \ namespaced properly."
+        \ class provides a default for the `ref_name` attribute in theModelSerializers's\
+        \ `Meta` class. This ensures that the OpenAPI definitionsof plugins are namespaced\
+        \ properly."
       example:
         add_content_units:
         - add_content_units
@@ -83045,9 +83663,9 @@ components:
     RepositoryResponse:
       description: "Base serializer for use with [pulpcore.app.models.Model][]This\
         \ ensures that all Serializers provide values for the 'pulp_href` field.The\
-        \ class provides a default for the ``ref_name`` attribute in theModelSerializers's\
-        \ ``Meta`` class. This ensures that the OpenAPI definitionsof plugins are\
-        \ namespaced properly."
+        \ class provides a default for the `ref_name` attribute in theModelSerializers's\
+        \ `Meta` class. This ensures that the OpenAPI definitionsof plugins are namespaced\
+        \ properly."
       example:
         pulp_href: https://openapi-generator.tech
         prn: prn
@@ -83161,17 +83779,17 @@ components:
           type: string
         mirror:
           default: false
-          description: "If ``True``, synchronization will remove all content that\
-            \ is not present in the remote repository. If ``False``, sync will be\
-            \ additive only."
+          description: "If `True`, synchronization will remove all content that is\
+            \ not present in the remote repository. If `False`, sync will be additive\
+            \ only."
           type: boolean
       type: object
     RepositoryVersionResponse:
       description: "Base serializer for use with [pulpcore.app.models.Model][]This\
         \ ensures that all Serializers provide values for the 'pulp_href` field.The\
-        \ class provides a default for the ``ref_name`` attribute in theModelSerializers's\
-        \ ``Meta`` class. This ensures that the OpenAPI definitionsof plugins are\
-        \ namespaced properly."
+        \ class provides a default for the `ref_name` attribute in theModelSerializers's\
+        \ `Meta` class. This ensures that the OpenAPI definitionsof plugins are namespaced\
+        \ properly."
       example:
         pulp_href: https://openapi-generator.tech
         prn: prn
@@ -83676,9 +84294,9 @@ components:
     TaskGroupResponse:
       description: "Base serializer for use with [pulpcore.app.models.Model][]This\
         \ ensures that all Serializers provide values for the 'pulp_href` field.The\
-        \ class provides a default for the ``ref_name`` attribute in theModelSerializers's\
-        \ ``Meta`` class. This ensures that the OpenAPI definitionsof plugins are\
-        \ namespaced properly."
+        \ class provides a default for the `ref_name` attribute in theModelSerializers's\
+        \ `Meta` class. This ensures that the OpenAPI definitionsof plugins are namespaced\
+        \ properly."
       example:
         pulp_href: https://openapi-generator.tech
         prn: prn
@@ -83793,9 +84411,9 @@ components:
     TaskResponse:
       description: "Base serializer for use with [pulpcore.app.models.Model][]This\
         \ ensures that all Serializers provide values for the 'pulp_href` field.The\
-        \ class provides a default for the ``ref_name`` attribute in theModelSerializers's\
-        \ ``Meta`` class. This ensures that the OpenAPI definitionsof plugins are\
-        \ namespaced properly."
+        \ class provides a default for the `ref_name` attribute in theModelSerializers's\
+        \ `Meta` class. This ensures that the OpenAPI definitionsof plugins are namespaced\
+        \ properly."
       example:
         pulp_href: https://openapi-generator.tech
         prn: prn
@@ -83963,9 +84581,9 @@ components:
     TaskScheduleResponse:
       description: "Base serializer for use with [pulpcore.app.models.Model][]This\
         \ ensures that all Serializers provide values for the 'pulp_href` field.The\
-        \ class provides a default for the ``ref_name`` attribute in theModelSerializers's\
-        \ ``Meta`` class. This ensures that the OpenAPI definitionsof plugins are\
-        \ namespaced properly."
+        \ class provides a default for the `ref_name` attribute in theModelSerializers's\
+        \ `Meta` class. This ensures that the OpenAPI definitionsof plugins are namespaced\
+        \ properly."
       example:
         pulp_href: https://openapi-generator.tech
         prn: prn
@@ -84527,7 +85145,7 @@ components:
           minLength: 1
           type: string
         password:
-          description: Users password. Set to ``null`` to disable password authentication.
+          description: Users password. Set to `null` to disable password authentication.
           minLength: 1
           nullable: true
           type: string
@@ -84908,9 +85526,9 @@ components:
     WorkerResponse:
       description: "Base serializer for use with [pulpcore.app.models.Model][]This\
         \ ensures that all Serializers provide values for the 'pulp_href` field.The\
-        \ class provides a default for the ``ref_name`` attribute in theModelSerializers's\
-        \ ``Meta`` class. This ensures that the OpenAPI definitionsof plugins are\
-        \ namespaced properly."
+        \ class provides a default for the `ref_name` attribute in theModelSerializers's\
+        \ `Meta` class. This ensures that the OpenAPI definitionsof plugins are namespaced\
+        \ properly."
       example:
         pulp_href: https://openapi-generator.tech
         prn: prn
@@ -85192,19 +85810,6 @@ components:
           format: uri
           nullable: true
           type: string
-        name:
-          description: "A unique name. Ex, `rawhide` and `stable`."
-          minLength: 1
-          type: string
-        content_guard:
-          description: "An optional content-guard. If none is specified, a default\
-            \ one will be used."
-          format: uri
-          type: string
-        hidden:
-          default: false
-          description: Whether this distribution should be shown in the content app.
-          type: boolean
         repository:
           description: The latest RepositoryVersion for this Repository will be served.
           format: uri
@@ -85215,6 +85820,19 @@ components:
             nullable: true
             type: string
           type: object
+        content_guard:
+          description: "An optional content-guard. If none is specified, a default\
+            \ one will be used."
+          format: uri
+          type: string
+        name:
+          description: "A unique name. Ex, `rawhide` and `stable`."
+          minLength: 1
+          type: string
+        hidden:
+          default: false
+          description: Whether this distribution should be shown in the content app.
+          type: boolean
         private:
           description: Restrict pull access to explicitly authorized users. Defaults
             to unrestricted pull access.
@@ -85232,19 +85850,19 @@ components:
       description: A serializer for ContainerDistribution.
       example:
         base_path: base_path
-        content_guard_prn: content_guard_prn
-        no_content_change_since: no_content_change_since
         repository_version: https://openapi-generator.tech
-        name: name
         pulp_last_updated: 2000-01-23T04:56:07.000+00:00
-        prn: prn
-        pulp_href: https://openapi-generator.tech
-        content_guard: https://openapi-generator.tech
-        hidden: false
-        pulp_created: 2000-01-23T04:56:07.000+00:00
         repository: https://openapi-generator.tech
+        pulp_created: 2000-01-23T04:56:07.000+00:00
+        content_guard_prn: content_guard_prn
+        prn: prn
         pulp_labels:
           key: pulp_labels
+        content_guard: https://openapi-generator.tech
+        pulp_href: https://openapi-generator.tech
+        name: name
+        hidden: false
+        no_content_change_since: no_content_change_since
         registry_path: registry_path
         remote: https://openapi-generator.tech
         namespace: https://openapi-generator.tech
@@ -85256,24 +85874,10 @@ components:
             paths that                     overlap with other distribution base paths
             (e.g. "foo" and "foo/bar")
           type: string
-        content_guard_prn:
-          description: The Pulp Resource Name (PRN) of the associated optional content
-            guard.
-          readOnly: true
-          type: string
-        no_content_change_since:
-          description: "Timestamp since when the distributed content served by this\
-            \ distribution has not changed. If equals to `null`, no guarantee is provided\
-            \ about content changes."
-          readOnly: true
-          type: string
         repository_version:
           description: RepositoryVersion to be served
           format: uri
           nullable: true
-          type: string
-        name:
-          description: "A unique name. Ex, `rawhide` and `stable`."
           type: string
         pulp_last_updated:
           description: "Timestamp of the last time this resource was updated. Note:\
@@ -85282,38 +85886,52 @@ components:
           format: date-time
           readOnly: true
           type: string
-        prn:
-          description: The Pulp Resource Name (PRN).
-          readOnly: true
-          type: string
-        pulp_href:
+        repository:
+          description: The latest RepositoryVersion for this Repository will be served.
           format: uri
-          readOnly: true
+          nullable: true
           type: string
-        content_guard:
-          description: "An optional content-guard. If none is specified, a default\
-            \ one will be used."
-          format: uri
-          type: string
-        hidden:
-          default: false
-          description: Whether this distribution should be shown in the content app.
-          type: boolean
         pulp_created:
           description: Timestamp of creation.
           format: date-time
           readOnly: true
           type: string
-        repository:
-          description: The latest RepositoryVersion for this Repository will be served.
-          format: uri
-          nullable: true
+        content_guard_prn:
+          description: The Pulp Resource Name (PRN) of the associated optional content
+            guard.
+          readOnly: true
+          type: string
+        prn:
+          description: The Pulp Resource Name (PRN).
+          readOnly: true
           type: string
         pulp_labels:
           additionalProperties:
             nullable: true
             type: string
           type: object
+        content_guard:
+          description: "An optional content-guard. If none is specified, a default\
+            \ one will be used."
+          format: uri
+          type: string
+        pulp_href:
+          format: uri
+          readOnly: true
+          type: string
+        name:
+          description: "A unique name. Ex, `rawhide` and `stable`."
+          type: string
+        hidden:
+          default: false
+          description: Whether this distribution should be shown in the content app.
+          type: boolean
+        no_content_change_since:
+          description: "Timestamp since when the distributed content served by this\
+            \ distribution has not changed. If equals to `null`, no guarantee is provided\
+            \ about content changes."
+          readOnly: true
+          type: string
         registry_path:
           description: The Registry hostname/name/ to use with docker pull command
             defined by this distribution.
@@ -85412,19 +86030,6 @@ components:
           format: uri
           nullable: true
           type: string
-        name:
-          description: "A unique name. Ex, `rawhide` and `stable`."
-          minLength: 1
-          type: string
-        content_guard:
-          description: "An optional content-guard. If none is specified, a default\
-            \ one will be used."
-          format: uri
-          type: string
-        hidden:
-          default: false
-          description: Whether this distribution should be shown in the content app.
-          type: boolean
         repository:
           description: The latest RepositoryVersion for this Repository will be served.
           format: uri
@@ -85435,6 +86040,19 @@ components:
             nullable: true
             type: string
           type: object
+        content_guard:
+          description: "An optional content-guard. If none is specified, a default\
+            \ one will be used."
+          format: uri
+          type: string
+        name:
+          description: "A unique name. Ex, `rawhide` and `stable`."
+          minLength: 1
+          type: string
+        hidden:
+          default: false
+          description: Whether this distribution should be shown in the content app.
+          type: boolean
         remote:
           description: Remote that can be used to fetch content when using pull-through
             caching.
@@ -85465,19 +86083,19 @@ components:
         sub-distributions.
       example:
         base_path: base_path
-        content_guard_prn: content_guard_prn
-        no_content_change_since: no_content_change_since
         repository_version: https://openapi-generator.tech
-        name: name
         pulp_last_updated: 2000-01-23T04:56:07.000+00:00
-        prn: prn
-        pulp_href: https://openapi-generator.tech
-        content_guard: https://openapi-generator.tech
-        hidden: false
-        pulp_created: 2000-01-23T04:56:07.000+00:00
         repository: https://openapi-generator.tech
+        pulp_created: 2000-01-23T04:56:07.000+00:00
+        content_guard_prn: content_guard_prn
+        prn: prn
         pulp_labels:
           key: pulp_labels
+        content_guard: https://openapi-generator.tech
+        pulp_href: https://openapi-generator.tech
+        name: name
+        hidden: false
+        no_content_change_since: no_content_change_since
         remote: https://openapi-generator.tech
         distributions:
         - https://openapi-generator.tech
@@ -85491,24 +86109,10 @@ components:
             paths that                     overlap with other distribution base paths
             (e.g. "foo" and "foo/bar")
           type: string
-        content_guard_prn:
-          description: The Pulp Resource Name (PRN) of the associated optional content
-            guard.
-          readOnly: true
-          type: string
-        no_content_change_since:
-          description: "Timestamp since when the distributed content served by this\
-            \ distribution has not changed. If equals to `null`, no guarantee is provided\
-            \ about content changes."
-          readOnly: true
-          type: string
         repository_version:
           description: RepositoryVersion to be served
           format: uri
           nullable: true
-          type: string
-        name:
-          description: "A unique name. Ex, `rawhide` and `stable`."
           type: string
         pulp_last_updated:
           description: "Timestamp of the last time this resource was updated. Note:\
@@ -85517,38 +86121,52 @@ components:
           format: date-time
           readOnly: true
           type: string
-        prn:
-          description: The Pulp Resource Name (PRN).
-          readOnly: true
-          type: string
-        pulp_href:
+        repository:
+          description: The latest RepositoryVersion for this Repository will be served.
           format: uri
-          readOnly: true
+          nullable: true
           type: string
-        content_guard:
-          description: "An optional content-guard. If none is specified, a default\
-            \ one will be used."
-          format: uri
-          type: string
-        hidden:
-          default: false
-          description: Whether this distribution should be shown in the content app.
-          type: boolean
         pulp_created:
           description: Timestamp of creation.
           format: date-time
           readOnly: true
           type: string
-        repository:
-          description: The latest RepositoryVersion for this Repository will be served.
-          format: uri
-          nullable: true
+        content_guard_prn:
+          description: The Pulp Resource Name (PRN) of the associated optional content
+            guard.
+          readOnly: true
+          type: string
+        prn:
+          description: The Pulp Resource Name (PRN).
+          readOnly: true
           type: string
         pulp_labels:
           additionalProperties:
             nullable: true
             type: string
           type: object
+        content_guard:
+          description: "An optional content-guard. If none is specified, a default\
+            \ one will be used."
+          format: uri
+          type: string
+        pulp_href:
+          format: uri
+          readOnly: true
+          type: string
+        name:
+          description: "A unique name. Ex, `rawhide` and `stable`."
+          type: string
+        hidden:
+          default: false
+          description: Whether this distribution should be shown in the content app.
+          type: boolean
+        no_content_change_since:
+          description: "Timestamp since when the distributed content served by this\
+            \ distribution has not changed. If equals to `null`, no guarantee is provided\
+            \ about content changes."
+          readOnly: true
+          type: string
         remote:
           description: Remote that can be used to fetch content when using pull-through
             caching.
@@ -85901,25 +86519,9 @@ components:
     container.ContainerPushRepository:
       description: Serializer for Container Push Repositories.
       properties:
-        description:
-          description: An optional description.
-          minLength: 1
-          nullable: true
-          type: string
         retain_repo_versions:
           description: Retain X versions of the repository. Default is null which
             retains all versions.
-          format: int64
-          minimum: 1
-          nullable: true
-          type: integer
-        name:
-          description: A unique name for this repository.
-          minLength: 1
-          type: string
-        retain_checkpoints:
-          description: Retain X checkpoint publications for the repository. Default
-            is null which retains all checkpoints.
           format: int64
           minimum: 1
           nullable: true
@@ -85934,37 +86536,45 @@ components:
             nullable: true
             type: string
           type: object
+        description:
+          description: An optional description.
+          minLength: 1
+          nullable: true
+          type: string
+        retain_checkpoints:
+          description: Retain X checkpoint publications for the repository. Default
+            is null which retains all checkpoints.
+          format: int64
+          minimum: 1
+          nullable: true
+          type: integer
+        name:
+          description: A unique name for this repository.
+          minLength: 1
+          type: string
       required:
       - name
       type: object
     container.ContainerPushRepositoryResponse:
       description: Serializer for Container Push Repositories.
       example:
-        versions_href: https://openapi-generator.tech
         latest_version_href: https://openapi-generator.tech
-        description: description
         retain_repo_versions: 1
-        name: name
-        pulp_last_updated: 2000-01-23T04:56:07.000+00:00
-        prn: prn
-        pulp_href: https://openapi-generator.tech
-        retain_checkpoints: 1
-        pulp_created: 2000-01-23T04:56:07.000+00:00
         manifest_signing_service: https://openapi-generator.tech
+        pulp_last_updated: 2000-01-23T04:56:07.000+00:00
+        pulp_created: 2000-01-23T04:56:07.000+00:00
         pulp_labels:
           key: pulp_labels
+        prn: prn
+        description: description
+        retain_checkpoints: 1
+        versions_href: https://openapi-generator.tech
+        pulp_href: https://openapi-generator.tech
+        name: name
       properties:
-        versions_href:
-          format: uri
-          readOnly: true
-          type: string
         latest_version_href:
           format: uri
           readOnly: true
-          type: string
-        description:
-          description: An optional description.
-          nullable: true
           type: string
         retain_repo_versions:
           description: Retain X versions of the repository. Default is null which
@@ -85973,8 +86583,10 @@ components:
           minimum: 1
           nullable: true
           type: integer
-        name:
-          description: A unique name for this repository.
+        manifest_signing_service:
+          description: A reference to an associated signing service.
+          format: uri
+          nullable: true
           type: string
         pulp_last_updated:
           description: "Timestamp of the last time this resource was updated. Note:\
@@ -85983,13 +86595,23 @@ components:
           format: date-time
           readOnly: true
           type: string
+        pulp_created:
+          description: Timestamp of creation.
+          format: date-time
+          readOnly: true
+          type: string
+        pulp_labels:
+          additionalProperties:
+            nullable: true
+            type: string
+          type: object
         prn:
           description: The Pulp Resource Name (PRN).
           readOnly: true
           type: string
-        pulp_href:
-          format: uri
-          readOnly: true
+        description:
+          description: An optional description.
+          nullable: true
           type: string
         retain_checkpoints:
           description: Retain X checkpoint publications for the repository. Default
@@ -85998,21 +86620,17 @@ components:
           minimum: 1
           nullable: true
           type: integer
-        pulp_created:
-          description: Timestamp of creation.
-          format: date-time
+        versions_href:
+          format: uri
           readOnly: true
           type: string
-        manifest_signing_service:
-          description: A reference to an associated signing service.
+        pulp_href:
           format: uri
-          nullable: true
+          readOnly: true
           type: string
-        pulp_labels:
-          additionalProperties:
-            nullable: true
-            type: string
-          type: object
+        name:
+          description: A unique name for this repository.
+          type: string
       required:
       - name
       type: object
@@ -89044,6 +89662,59 @@ components:
       required:
       - base_path
       - name
+      type: object
+    maven.MavenIndexPageResponse:
+      description: A read-only Serializer for MavenIndexPage.
+      example:
+        pulp_href: https://openapi-generator.tech
+        prn: prn
+        pulp_created: 2000-01-23T04:56:07.000+00:00
+        pulp_last_updated: 2000-01-23T04:56:07.000+00:00
+        pulp_labels:
+          key: pulp_labels
+        vuln_report: https://openapi-generator.tech
+        path: path
+        sha256: sha256
+      properties:
+        pulp_href:
+          format: uri
+          readOnly: true
+          type: string
+        prn:
+          description: The Pulp Resource Name (PRN).
+          readOnly: true
+          type: string
+        pulp_created:
+          description: Timestamp of creation.
+          format: date-time
+          readOnly: true
+          type: string
+        pulp_last_updated:
+          description: "Timestamp of the last time this resource was updated. Note:\
+            \ for immutable resources - like content, repository versions, and publication\
+            \ - pulp_created and pulp_last_updated dates will be the same."
+          format: date-time
+          readOnly: true
+          type: string
+        pulp_labels:
+          additionalProperties:
+            nullable: true
+            type: string
+          description: A dictionary of arbitrary key/value pairs used to describe
+            a specific Content instance.
+          type: object
+        vuln_report:
+          format: uri
+          readOnly: true
+          type: string
+        path:
+          description: Directory path this page indexes.
+          readOnly: true
+          type: string
+        sha256:
+          description: SHA256 digest of the HTML content.
+          readOnly: true
+          type: string
       type: object
     maven.MavenMetadata:
       description: A Serializer for MavenMetadata.
