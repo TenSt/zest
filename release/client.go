@@ -104,6 +104,8 @@ type APIClient struct {
 
 	ContentManifestsAPI *ContentManifestsAPIService
 
+	ContentMavenIndexPageAPI *ContentMavenIndexPageAPIService
+
 	ContentMetadataAPI *ContentMetadataAPIService
 
 	ContentModulemdDefaultsAPI *ContentModulemdDefaultsAPIService
@@ -258,11 +260,17 @@ type APIClient struct {
 
 	PypiMetadataAPI *PypiMetadataAPIService
 
+	PypiPackagesXmlAPI *PypiPackagesXmlAPIService
+
+	PypiProjectReleasesXmlAPI *PypiProjectReleasesXmlAPIService
+
 	PypiProvenanceAPI *PypiProvenanceAPIService
 
 	PypiSimpleAPI *PypiSimpleAPIService
 
 	PypiUnyankAPI *PypiUnyankAPIService
+
+	PypiUpdatesXmlAPI *PypiUpdatesXmlAPIService
 
 	PypiYankAPI *PypiYankAPIService
 
@@ -412,6 +420,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ContentFilesAPI = (*ContentFilesAPIService)(&c.common)
 	c.ContentHuggingFaceAPI = (*ContentHuggingFaceAPIService)(&c.common)
 	c.ContentManifestsAPI = (*ContentManifestsAPIService)(&c.common)
+	c.ContentMavenIndexPageAPI = (*ContentMavenIndexPageAPIService)(&c.common)
 	c.ContentMetadataAPI = (*ContentMetadataAPIService)(&c.common)
 	c.ContentModulemdDefaultsAPI = (*ContentModulemdDefaultsAPIService)(&c.common)
 	c.ContentModulemdObsoletesAPI = (*ContentModulemdObsoletesAPIService)(&c.common)
@@ -489,9 +498,12 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.PypiAPI = (*PypiAPIService)(&c.common)
 	c.PypiLegacyAPI = (*PypiLegacyAPIService)(&c.common)
 	c.PypiMetadataAPI = (*PypiMetadataAPIService)(&c.common)
+	c.PypiPackagesXmlAPI = (*PypiPackagesXmlAPIService)(&c.common)
+	c.PypiProjectReleasesXmlAPI = (*PypiProjectReleasesXmlAPIService)(&c.common)
 	c.PypiProvenanceAPI = (*PypiProvenanceAPIService)(&c.common)
 	c.PypiSimpleAPI = (*PypiSimpleAPIService)(&c.common)
 	c.PypiUnyankAPI = (*PypiUnyankAPIService)(&c.common)
+	c.PypiUpdatesXmlAPI = (*PypiUpdatesXmlAPIService)(&c.common)
 	c.PypiYankAPI = (*PypiYankAPIService)(&c.common)
 	c.PypiYankMonitorAPI = (*PypiYankMonitorAPIService)(&c.common)
 	c.RemotesAPI = (*RemotesAPIService)(&c.common)

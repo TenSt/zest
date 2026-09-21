@@ -22,26 +22,26 @@ var _ MappedNullable = &ContainerContainerPushRepositoryResponse{}
 
 // ContainerContainerPushRepositoryResponse Serializer for Container Push Repositories.
 type ContainerContainerPushRepositoryResponse struct {
-	VersionsHref *string `json:"versions_href,omitempty"`
-	LatestVersionHref *string `json:"latest_version_href,omitempty"`
-	// An optional description.
-	Description NullableString `json:"description,omitempty"`
-	// Retain X versions of the repository. Default is null which retains all versions.
-	RetainRepoVersions NullableInt64 `json:"retain_repo_versions,omitempty"`
-	// A unique name for this repository.
-	Name string `json:"name"`
-	// Timestamp of the last time this resource was updated. Note: for immutable resources - like content, repository versions, and publication - pulp_created and pulp_last_updated dates will be the same.
-	PulpLastUpdated *time.Time `json:"pulp_last_updated,omitempty"`
 	// The Pulp Resource Name (PRN).
 	Prn *string `json:"prn,omitempty"`
+	VersionsHref *string `json:"versions_href,omitempty"`
+	// A unique name for this repository.
+	Name string `json:"name"`
+	// Retain X versions of the repository. Default is null which retains all versions.
+	RetainRepoVersions NullableInt64 `json:"retain_repo_versions,omitempty"`
+	// Timestamp of the last time this resource was updated. Note: for immutable resources - like content, repository versions, and publication - pulp_created and pulp_last_updated dates will be the same.
+	PulpLastUpdated *time.Time `json:"pulp_last_updated,omitempty"`
 	PulpHref *string `json:"pulp_href,omitempty"`
-	// Retain X checkpoint publications for the repository. Default is null which retains all checkpoints.
-	RetainCheckpoints NullableInt64 `json:"retain_checkpoints,omitempty"`
 	// Timestamp of creation.
 	PulpCreated *time.Time `json:"pulp_created,omitempty"`
+	PulpLabels *map[string]*string `json:"pulp_labels,omitempty"`
+	// An optional description.
+	Description NullableString `json:"description,omitempty"`
 	// A reference to an associated signing service.
 	ManifestSigningService NullableString `json:"manifest_signing_service,omitempty"`
-	PulpLabels *map[string]*string `json:"pulp_labels,omitempty"`
+	LatestVersionHref *string `json:"latest_version_href,omitempty"`
+	// Retain X checkpoint publications for the repository. Default is null which retains all checkpoints.
+	RetainCheckpoints NullableInt64 `json:"retain_checkpoints,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -63,6 +63,38 @@ func NewContainerContainerPushRepositoryResponse(name string) *ContainerContaine
 func NewContainerContainerPushRepositoryResponseWithDefaults() *ContainerContainerPushRepositoryResponse {
 	this := ContainerContainerPushRepositoryResponse{}
 	return &this
+}
+
+// GetPrn returns the Prn field value if set, zero value otherwise.
+func (o *ContainerContainerPushRepositoryResponse) GetPrn() string {
+	if o == nil || IsNil(o.Prn) {
+		var ret string
+		return ret
+	}
+	return *o.Prn
+}
+
+// GetPrnOk returns a tuple with the Prn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerContainerPushRepositoryResponse) GetPrnOk() (*string, bool) {
+	if o == nil || IsNil(o.Prn) {
+		return nil, false
+	}
+	return o.Prn, true
+}
+
+// HasPrn returns a boolean if a field has been set.
+func (o *ContainerContainerPushRepositoryResponse) HasPrn() bool {
+	if o != nil && !IsNil(o.Prn) {
+		return true
+	}
+
+	return false
+}
+
+// SetPrn gets a reference to the given string and assigns it to the Prn field.
+func (o *ContainerContainerPushRepositoryResponse) SetPrn(v string) {
+	o.Prn = &v
 }
 
 // GetVersionsHref returns the VersionsHref field value if set, zero value otherwise.
@@ -97,78 +129,28 @@ func (o *ContainerContainerPushRepositoryResponse) SetVersionsHref(v string) {
 	o.VersionsHref = &v
 }
 
-// GetLatestVersionHref returns the LatestVersionHref field value if set, zero value otherwise.
-func (o *ContainerContainerPushRepositoryResponse) GetLatestVersionHref() string {
-	if o == nil || IsNil(o.LatestVersionHref) {
+// GetName returns the Name field value
+func (o *ContainerContainerPushRepositoryResponse) GetName() string {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.LatestVersionHref
+
+	return o.Name
 }
 
-// GetLatestVersionHrefOk returns a tuple with the LatestVersionHref field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *ContainerContainerPushRepositoryResponse) GetLatestVersionHrefOk() (*string, bool) {
-	if o == nil || IsNil(o.LatestVersionHref) {
-		return nil, false
-	}
-	return o.LatestVersionHref, true
-}
-
-// HasLatestVersionHref returns a boolean if a field has been set.
-func (o *ContainerContainerPushRepositoryResponse) HasLatestVersionHref() bool {
-	if o != nil && !IsNil(o.LatestVersionHref) {
-		return true
-	}
-
-	return false
-}
-
-// SetLatestVersionHref gets a reference to the given string and assigns it to the LatestVersionHref field.
-func (o *ContainerContainerPushRepositoryResponse) SetLatestVersionHref(v string) {
-	o.LatestVersionHref = &v
-}
-
-// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ContainerContainerPushRepositoryResponse) GetDescription() string {
-	if o == nil || IsNil(o.Description.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Description.Get()
-}
-
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ContainerContainerPushRepositoryResponse) GetDescriptionOk() (*string, bool) {
+func (o *ContainerContainerPushRepositoryResponse) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Description.Get(), o.Description.IsSet()
+	return &o.Name, true
 }
 
-// HasDescription returns a boolean if a field has been set.
-func (o *ContainerContainerPushRepositoryResponse) HasDescription() bool {
-	if o != nil && o.Description.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
-func (o *ContainerContainerPushRepositoryResponse) SetDescription(v string) {
-	o.Description.Set(&v)
-}
-// SetDescriptionNil sets the value for Description to be an explicit nil
-func (o *ContainerContainerPushRepositoryResponse) SetDescriptionNil() {
-	o.Description.Set(nil)
-}
-
-// UnsetDescription ensures that no value is present for Description, not even an explicit nil
-func (o *ContainerContainerPushRepositoryResponse) UnsetDescription() {
-	o.Description.Unset()
+// SetName sets field value
+func (o *ContainerContainerPushRepositoryResponse) SetName(v string) {
+	o.Name = v
 }
 
 // GetRetainRepoVersions returns the RetainRepoVersions field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -213,30 +195,6 @@ func (o *ContainerContainerPushRepositoryResponse) UnsetRetainRepoVersions() {
 	o.RetainRepoVersions.Unset()
 }
 
-// GetName returns the Name field value
-func (o *ContainerContainerPushRepositoryResponse) GetName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value
-// and a boolean to check if the value has been set.
-func (o *ContainerContainerPushRepositoryResponse) GetNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Name, true
-}
-
-// SetName sets field value
-func (o *ContainerContainerPushRepositoryResponse) SetName(v string) {
-	o.Name = v
-}
-
 // GetPulpLastUpdated returns the PulpLastUpdated field value if set, zero value otherwise.
 func (o *ContainerContainerPushRepositoryResponse) GetPulpLastUpdated() time.Time {
 	if o == nil || IsNil(o.PulpLastUpdated) {
@@ -267,38 +225,6 @@ func (o *ContainerContainerPushRepositoryResponse) HasPulpLastUpdated() bool {
 // SetPulpLastUpdated gets a reference to the given time.Time and assigns it to the PulpLastUpdated field.
 func (o *ContainerContainerPushRepositoryResponse) SetPulpLastUpdated(v time.Time) {
 	o.PulpLastUpdated = &v
-}
-
-// GetPrn returns the Prn field value if set, zero value otherwise.
-func (o *ContainerContainerPushRepositoryResponse) GetPrn() string {
-	if o == nil || IsNil(o.Prn) {
-		var ret string
-		return ret
-	}
-	return *o.Prn
-}
-
-// GetPrnOk returns a tuple with the Prn field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ContainerContainerPushRepositoryResponse) GetPrnOk() (*string, bool) {
-	if o == nil || IsNil(o.Prn) {
-		return nil, false
-	}
-	return o.Prn, true
-}
-
-// HasPrn returns a boolean if a field has been set.
-func (o *ContainerContainerPushRepositoryResponse) HasPrn() bool {
-	if o != nil && !IsNil(o.Prn) {
-		return true
-	}
-
-	return false
-}
-
-// SetPrn gets a reference to the given string and assigns it to the Prn field.
-func (o *ContainerContainerPushRepositoryResponse) SetPrn(v string) {
-	o.Prn = &v
 }
 
 // GetPulpHref returns the PulpHref field value if set, zero value otherwise.
@@ -333,48 +259,6 @@ func (o *ContainerContainerPushRepositoryResponse) SetPulpHref(v string) {
 	o.PulpHref = &v
 }
 
-// GetRetainCheckpoints returns the RetainCheckpoints field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ContainerContainerPushRepositoryResponse) GetRetainCheckpoints() int64 {
-	if o == nil || IsNil(o.RetainCheckpoints.Get()) {
-		var ret int64
-		return ret
-	}
-	return *o.RetainCheckpoints.Get()
-}
-
-// GetRetainCheckpointsOk returns a tuple with the RetainCheckpoints field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ContainerContainerPushRepositoryResponse) GetRetainCheckpointsOk() (*int64, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.RetainCheckpoints.Get(), o.RetainCheckpoints.IsSet()
-}
-
-// HasRetainCheckpoints returns a boolean if a field has been set.
-func (o *ContainerContainerPushRepositoryResponse) HasRetainCheckpoints() bool {
-	if o != nil && o.RetainCheckpoints.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetRetainCheckpoints gets a reference to the given NullableInt64 and assigns it to the RetainCheckpoints field.
-func (o *ContainerContainerPushRepositoryResponse) SetRetainCheckpoints(v int64) {
-	o.RetainCheckpoints.Set(&v)
-}
-// SetRetainCheckpointsNil sets the value for RetainCheckpoints to be an explicit nil
-func (o *ContainerContainerPushRepositoryResponse) SetRetainCheckpointsNil() {
-	o.RetainCheckpoints.Set(nil)
-}
-
-// UnsetRetainCheckpoints ensures that no value is present for RetainCheckpoints, not even an explicit nil
-func (o *ContainerContainerPushRepositoryResponse) UnsetRetainCheckpoints() {
-	o.RetainCheckpoints.Unset()
-}
-
 // GetPulpCreated returns the PulpCreated field value if set, zero value otherwise.
 func (o *ContainerContainerPushRepositoryResponse) GetPulpCreated() time.Time {
 	if o == nil || IsNil(o.PulpCreated) {
@@ -405,6 +289,80 @@ func (o *ContainerContainerPushRepositoryResponse) HasPulpCreated() bool {
 // SetPulpCreated gets a reference to the given time.Time and assigns it to the PulpCreated field.
 func (o *ContainerContainerPushRepositoryResponse) SetPulpCreated(v time.Time) {
 	o.PulpCreated = &v
+}
+
+// GetPulpLabels returns the PulpLabels field value if set, zero value otherwise.
+func (o *ContainerContainerPushRepositoryResponse) GetPulpLabels() map[string]*string {
+	if o == nil || IsNil(o.PulpLabels) {
+		var ret map[string]*string
+		return ret
+	}
+	return *o.PulpLabels
+}
+
+// GetPulpLabelsOk returns a tuple with the PulpLabels field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerContainerPushRepositoryResponse) GetPulpLabelsOk() (*map[string]*string, bool) {
+	if o == nil || IsNil(o.PulpLabels) {
+		return nil, false
+	}
+	return o.PulpLabels, true
+}
+
+// HasPulpLabels returns a boolean if a field has been set.
+func (o *ContainerContainerPushRepositoryResponse) HasPulpLabels() bool {
+	if o != nil && !IsNil(o.PulpLabels) {
+		return true
+	}
+
+	return false
+}
+
+// SetPulpLabels gets a reference to the given map[string]*string and assigns it to the PulpLabels field.
+func (o *ContainerContainerPushRepositoryResponse) SetPulpLabels(v map[string]*string) {
+	o.PulpLabels = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ContainerContainerPushRepositoryResponse) GetDescription() string {
+	if o == nil || IsNil(o.Description.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Description.Get()
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ContainerContainerPushRepositoryResponse) GetDescriptionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Description.Get(), o.Description.IsSet()
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *ContainerContainerPushRepositoryResponse) HasDescription() bool {
+	if o != nil && o.Description.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
+func (o *ContainerContainerPushRepositoryResponse) SetDescription(v string) {
+	o.Description.Set(&v)
+}
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *ContainerContainerPushRepositoryResponse) SetDescriptionNil() {
+	o.Description.Set(nil)
+}
+
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *ContainerContainerPushRepositoryResponse) UnsetDescription() {
+	o.Description.Unset()
 }
 
 // GetManifestSigningService returns the ManifestSigningService field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -449,36 +407,78 @@ func (o *ContainerContainerPushRepositoryResponse) UnsetManifestSigningService()
 	o.ManifestSigningService.Unset()
 }
 
-// GetPulpLabels returns the PulpLabels field value if set, zero value otherwise.
-func (o *ContainerContainerPushRepositoryResponse) GetPulpLabels() map[string]*string {
-	if o == nil || IsNil(o.PulpLabels) {
-		var ret map[string]*string
+// GetLatestVersionHref returns the LatestVersionHref field value if set, zero value otherwise.
+func (o *ContainerContainerPushRepositoryResponse) GetLatestVersionHref() string {
+	if o == nil || IsNil(o.LatestVersionHref) {
+		var ret string
 		return ret
 	}
-	return *o.PulpLabels
+	return *o.LatestVersionHref
 }
 
-// GetPulpLabelsOk returns a tuple with the PulpLabels field value if set, nil otherwise
+// GetLatestVersionHrefOk returns a tuple with the LatestVersionHref field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ContainerContainerPushRepositoryResponse) GetPulpLabelsOk() (*map[string]*string, bool) {
-	if o == nil || IsNil(o.PulpLabels) {
+func (o *ContainerContainerPushRepositoryResponse) GetLatestVersionHrefOk() (*string, bool) {
+	if o == nil || IsNil(o.LatestVersionHref) {
 		return nil, false
 	}
-	return o.PulpLabels, true
+	return o.LatestVersionHref, true
 }
 
-// HasPulpLabels returns a boolean if a field has been set.
-func (o *ContainerContainerPushRepositoryResponse) HasPulpLabels() bool {
-	if o != nil && !IsNil(o.PulpLabels) {
+// HasLatestVersionHref returns a boolean if a field has been set.
+func (o *ContainerContainerPushRepositoryResponse) HasLatestVersionHref() bool {
+	if o != nil && !IsNil(o.LatestVersionHref) {
 		return true
 	}
 
 	return false
 }
 
-// SetPulpLabels gets a reference to the given map[string]*string and assigns it to the PulpLabels field.
-func (o *ContainerContainerPushRepositoryResponse) SetPulpLabels(v map[string]*string) {
-	o.PulpLabels = &v
+// SetLatestVersionHref gets a reference to the given string and assigns it to the LatestVersionHref field.
+func (o *ContainerContainerPushRepositoryResponse) SetLatestVersionHref(v string) {
+	o.LatestVersionHref = &v
+}
+
+// GetRetainCheckpoints returns the RetainCheckpoints field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ContainerContainerPushRepositoryResponse) GetRetainCheckpoints() int64 {
+	if o == nil || IsNil(o.RetainCheckpoints.Get()) {
+		var ret int64
+		return ret
+	}
+	return *o.RetainCheckpoints.Get()
+}
+
+// GetRetainCheckpointsOk returns a tuple with the RetainCheckpoints field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ContainerContainerPushRepositoryResponse) GetRetainCheckpointsOk() (*int64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.RetainCheckpoints.Get(), o.RetainCheckpoints.IsSet()
+}
+
+// HasRetainCheckpoints returns a boolean if a field has been set.
+func (o *ContainerContainerPushRepositoryResponse) HasRetainCheckpoints() bool {
+	if o != nil && o.RetainCheckpoints.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetRetainCheckpoints gets a reference to the given NullableInt64 and assigns it to the RetainCheckpoints field.
+func (o *ContainerContainerPushRepositoryResponse) SetRetainCheckpoints(v int64) {
+	o.RetainCheckpoints.Set(&v)
+}
+// SetRetainCheckpointsNil sets the value for RetainCheckpoints to be an explicit nil
+func (o *ContainerContainerPushRepositoryResponse) SetRetainCheckpointsNil() {
+	o.RetainCheckpoints.Set(nil)
+}
+
+// UnsetRetainCheckpoints ensures that no value is present for RetainCheckpoints, not even an explicit nil
+func (o *ContainerContainerPushRepositoryResponse) UnsetRetainCheckpoints() {
+	o.RetainCheckpoints.Unset()
 }
 
 func (o ContainerContainerPushRepositoryResponse) MarshalJSON() ([]byte, error) {
@@ -491,39 +491,39 @@ func (o ContainerContainerPushRepositoryResponse) MarshalJSON() ([]byte, error) 
 
 func (o ContainerContainerPushRepositoryResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Prn) {
+		toSerialize["prn"] = o.Prn
+	}
 	if !IsNil(o.VersionsHref) {
 		toSerialize["versions_href"] = o.VersionsHref
 	}
-	if !IsNil(o.LatestVersionHref) {
-		toSerialize["latest_version_href"] = o.LatestVersionHref
-	}
-	if o.Description.IsSet() {
-		toSerialize["description"] = o.Description.Get()
-	}
+	toSerialize["name"] = o.Name
 	if o.RetainRepoVersions.IsSet() {
 		toSerialize["retain_repo_versions"] = o.RetainRepoVersions.Get()
 	}
-	toSerialize["name"] = o.Name
 	if !IsNil(o.PulpLastUpdated) {
 		toSerialize["pulp_last_updated"] = o.PulpLastUpdated
-	}
-	if !IsNil(o.Prn) {
-		toSerialize["prn"] = o.Prn
 	}
 	if !IsNil(o.PulpHref) {
 		toSerialize["pulp_href"] = o.PulpHref
 	}
-	if o.RetainCheckpoints.IsSet() {
-		toSerialize["retain_checkpoints"] = o.RetainCheckpoints.Get()
-	}
 	if !IsNil(o.PulpCreated) {
 		toSerialize["pulp_created"] = o.PulpCreated
+	}
+	if !IsNil(o.PulpLabels) {
+		toSerialize["pulp_labels"] = o.PulpLabels
+	}
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
 	}
 	if o.ManifestSigningService.IsSet() {
 		toSerialize["manifest_signing_service"] = o.ManifestSigningService.Get()
 	}
-	if !IsNil(o.PulpLabels) {
-		toSerialize["pulp_labels"] = o.PulpLabels
+	if !IsNil(o.LatestVersionHref) {
+		toSerialize["latest_version_href"] = o.LatestVersionHref
+	}
+	if o.RetainCheckpoints.IsSet() {
+		toSerialize["retain_checkpoints"] = o.RetainCheckpoints.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -568,18 +568,18 @@ func (o *ContainerContainerPushRepositoryResponse) UnmarshalJSON(data []byte) (e
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "versions_href")
-		delete(additionalProperties, "latest_version_href")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "retain_repo_versions")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "pulp_last_updated")
 		delete(additionalProperties, "prn")
+		delete(additionalProperties, "versions_href")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "retain_repo_versions")
+		delete(additionalProperties, "pulp_last_updated")
 		delete(additionalProperties, "pulp_href")
-		delete(additionalProperties, "retain_checkpoints")
 		delete(additionalProperties, "pulp_created")
-		delete(additionalProperties, "manifest_signing_service")
 		delete(additionalProperties, "pulp_labels")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "manifest_signing_service")
+		delete(additionalProperties, "latest_version_href")
+		delete(additionalProperties, "retain_checkpoints")
 		o.AdditionalProperties = additionalProperties
 	}
 
