@@ -30,6 +30,7 @@ type ContentPackageAPIContentMavenPackageListRequest struct {
 	ApiService *ContentPackageAPIService
 	pulpDomain string
 	xTaskDiagnostics *[]string
+	addedBetween *[]string
 	artifactId *string
 	baseVersion *string
 	collapseBuilds *bool
@@ -45,6 +46,7 @@ type ContentPackageAPIContentMavenPackageListRequest struct {
 	pulpIdIn *[]string
 	pulpLabelSelect *string
 	q *string
+	removedBetween *[]string
 	repositoryVersion *string
 	repositoryVersionAdded *string
 	repositoryVersionRemoved *string
@@ -60,19 +62,24 @@ func (r ContentPackageAPIContentMavenPackageListRequest) XTaskDiagnostics(xTaskD
 	return r
 }
 
+func (r ContentPackageAPIContentMavenPackageListRequest) AddedBetween(addedBetween []string) ContentPackageAPIContentMavenPackageListRequest {
+	r.addedBetween = &addedBetween
+	return r
+}
+
 // Filter results where artifact_id matches value
 func (r ContentPackageAPIContentMavenPackageListRequest) ArtifactId(artifactId string) ContentPackageAPIContentMavenPackageListRequest {
 	r.artifactId = &artifactId
 	return r
 }
 
-// Match units whose version strips to this logical version (same suffix as collapse_builds: \\.[a-zA-Z]+-\\d+$). 5.3.18 matches 5.3.18 and 5.3.18.rhlw-00003, but not 5.3.180.
+// Match units whose version strips to this logical version (same suffix as collapse_builds: \\.[a-zA-Z]+-[^.]+$). 5.3.17 matches 5.3.17, 5.3.17.rhlw-00001, and 5.3.17.rhlw-00001-n0001, but not 5.3.170.
 func (r ContentPackageAPIContentMavenPackageListRequest) BaseVersion(baseVersion string) ContentPackageAPIContentMavenPackageListRequest {
 	r.baseVersion = &baseVersion
 	return r
 }
 
-// When true, collapse rebuilds of the same logical version: strip a trailing suffix matching \\.[a-zA-Z]+-\\d+$ from version, then keep one MavenPackage per (group_id, artifact_id, base_version) with the latest pulp_created. Default false.
+// When true, collapse rebuilds of the same logical version: strip a trailing suffix matching \\.[a-zA-Z]+-[^.]+$ from version, then keep one MavenPackage per (group_id, artifact_id, base_version) with the latest pulp_created. Default false.
 func (r ContentPackageAPIContentMavenPackageListRequest) CollapseBuilds(collapseBuilds bool) ContentPackageAPIContentMavenPackageListRequest {
 	r.collapseBuilds = &collapseBuilds
 	return r
@@ -147,6 +154,11 @@ func (r ContentPackageAPIContentMavenPackageListRequest) PulpLabelSelect(pulpLab
 // Filter results by using NOT, AND and OR operations on other filters
 func (r ContentPackageAPIContentMavenPackageListRequest) Q(q string) ContentPackageAPIContentMavenPackageListRequest {
 	r.q = &q
+	return r
+}
+
+func (r ContentPackageAPIContentMavenPackageListRequest) RemovedBetween(removedBetween []string) ContentPackageAPIContentMavenPackageListRequest {
+	r.removedBetween = &removedBetween
 	return r
 }
 
@@ -233,6 +245,9 @@ func (a *ContentPackageAPIService) ContentMavenPackageListExecute(r ContentPacka
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.addedBetween != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "added_between", r.addedBetween, "form", "csv")
+	}
 	if r.artifactId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "artifact_id", r.artifactId, "form", "")
 	}
@@ -277,6 +292,9 @@ func (a *ContentPackageAPIService) ContentMavenPackageListExecute(r ContentPacka
 	}
 	if r.q != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "q", r.q, "form", "")
+	}
+	if r.removedBetween != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "removed_between", r.removedBetween, "form", "csv")
 	}
 	if r.repositoryVersion != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "repository_version", r.repositoryVersion, "form", "")

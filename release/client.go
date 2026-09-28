@@ -64,6 +64,10 @@ type APIClient struct {
 
 	ApiDebugDatabaseTriggersAPI *ApiDebugDatabaseTriggersAPIService
 
+	ApiDebugDomainorgBackfillReportAPI *ApiDebugDomainorgBackfillReportAPIService
+
+	ApiDebugFlushContentCacheAPI *ApiDebugFlushContentCacheAPIService
+
 	ApiDebugReleaseTaskLocksAPI *ApiDebugReleaseTaskLocksAPIService
 
 	ApiDebugStaleLocksAPI *ApiDebugStaleLocksAPIService
@@ -75,6 +79,8 @@ type APIClient struct {
 	ApiMavenAPI *ApiMavenAPIService
 
 	ApiMigrateDomainAPI *ApiMigrateDomainAPIService
+
+	ApiPublicDebugAuthHeaderAPI *ApiPublicDebugAuthHeaderAPIService
 
 	ApiRdsConnectionTestsAPI *ApiRdsConnectionTestsAPIService
 
@@ -103,6 +109,8 @@ type APIClient struct {
 	ContentHuggingFaceAPI *ContentHuggingFaceAPIService
 
 	ContentManifestsAPI *ContentManifestsAPIService
+
+	ContentMavenIndexPageAPI *ContentMavenIndexPageAPIService
 
 	ContentMetadataAPI *ContentMetadataAPIService
 
@@ -163,6 +171,8 @@ type APIClient struct {
 	ContentguardsCompositeAPI *ContentguardsCompositeAPIService
 
 	ContentguardsContentRedirectAPI *ContentguardsContentRedirectAPIService
+
+	ContentguardsEnvvarHeaderAPI *ContentguardsEnvvarHeaderAPIService
 
 	ContentguardsFeatureAPI *ContentguardsFeatureAPIService
 
@@ -258,11 +268,17 @@ type APIClient struct {
 
 	PypiMetadataAPI *PypiMetadataAPIService
 
+	PypiPackagesXmlAPI *PypiPackagesXmlAPIService
+
+	PypiProjectReleasesXmlAPI *PypiProjectReleasesXmlAPIService
+
 	PypiProvenanceAPI *PypiProvenanceAPIService
 
 	PypiSimpleAPI *PypiSimpleAPIService
 
 	PypiUnyankAPI *PypiUnyankAPIService
+
+	PypiUpdatesXmlAPI *PypiUpdatesXmlAPIService
 
 	PypiYankAPI *PypiYankAPIService
 
@@ -392,12 +408,15 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ApiDebugAuthHeaderAPI = (*ApiDebugAuthHeaderAPIService)(&c.common)
 	c.ApiDebugCleanupStaleLocksAPI = (*ApiDebugCleanupStaleLocksAPIService)(&c.common)
 	c.ApiDebugDatabaseTriggersAPI = (*ApiDebugDatabaseTriggersAPIService)(&c.common)
+	c.ApiDebugDomainorgBackfillReportAPI = (*ApiDebugDomainorgBackfillReportAPIService)(&c.common)
+	c.ApiDebugFlushContentCacheAPI = (*ApiDebugFlushContentCacheAPIService)(&c.common)
 	c.ApiDebugReleaseTaskLocksAPI = (*ApiDebugReleaseTaskLocksAPIService)(&c.common)
 	c.ApiDebugStaleLocksAPI = (*ApiDebugStaleLocksAPIService)(&c.common)
 	c.ApiDebugTaskDebugAPI = (*ApiDebugTaskDebugAPIService)(&c.common)
 	c.ApiDebugTaskQueueAPI = (*ApiDebugTaskQueueAPIService)(&c.common)
 	c.ApiMavenAPI = (*ApiMavenAPIService)(&c.common)
 	c.ApiMigrateDomainAPI = (*ApiMigrateDomainAPIService)(&c.common)
+	c.ApiPublicDebugAuthHeaderAPI = (*ApiPublicDebugAuthHeaderAPIService)(&c.common)
 	c.ApiRdsConnectionTestsAPI = (*ApiRdsConnectionTestsAPIService)(&c.common)
 	c.ApiTestPagerdutyAlertAPI = (*ApiTestPagerdutyAlertAPIService)(&c.common)
 	c.ApiTestRandomLockTasksAPI = (*ApiTestRandomLockTasksAPIService)(&c.common)
@@ -412,6 +431,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ContentFilesAPI = (*ContentFilesAPIService)(&c.common)
 	c.ContentHuggingFaceAPI = (*ContentHuggingFaceAPIService)(&c.common)
 	c.ContentManifestsAPI = (*ContentManifestsAPIService)(&c.common)
+	c.ContentMavenIndexPageAPI = (*ContentMavenIndexPageAPIService)(&c.common)
 	c.ContentMetadataAPI = (*ContentMetadataAPIService)(&c.common)
 	c.ContentModulemdDefaultsAPI = (*ContentModulemdDefaultsAPIService)(&c.common)
 	c.ContentModulemdObsoletesAPI = (*ContentModulemdObsoletesAPIService)(&c.common)
@@ -442,6 +462,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ContentguardsAPI = (*ContentguardsAPIService)(&c.common)
 	c.ContentguardsCompositeAPI = (*ContentguardsCompositeAPIService)(&c.common)
 	c.ContentguardsContentRedirectAPI = (*ContentguardsContentRedirectAPIService)(&c.common)
+	c.ContentguardsEnvvarHeaderAPI = (*ContentguardsEnvvarHeaderAPIService)(&c.common)
 	c.ContentguardsFeatureAPI = (*ContentguardsFeatureAPIService)(&c.common)
 	c.ContentguardsHeaderAPI = (*ContentguardsHeaderAPIService)(&c.common)
 	c.ContentguardsRbacAPI = (*ContentguardsRbacAPIService)(&c.common)
@@ -489,9 +510,12 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.PypiAPI = (*PypiAPIService)(&c.common)
 	c.PypiLegacyAPI = (*PypiLegacyAPIService)(&c.common)
 	c.PypiMetadataAPI = (*PypiMetadataAPIService)(&c.common)
+	c.PypiPackagesXmlAPI = (*PypiPackagesXmlAPIService)(&c.common)
+	c.PypiProjectReleasesXmlAPI = (*PypiProjectReleasesXmlAPIService)(&c.common)
 	c.PypiProvenanceAPI = (*PypiProvenanceAPIService)(&c.common)
 	c.PypiSimpleAPI = (*PypiSimpleAPIService)(&c.common)
 	c.PypiUnyankAPI = (*PypiUnyankAPIService)(&c.common)
+	c.PypiUpdatesXmlAPI = (*PypiUpdatesXmlAPIService)(&c.common)
 	c.PypiYankAPI = (*PypiYankAPIService)(&c.common)
 	c.PypiYankMonitorAPI = (*PypiYankMonitorAPIService)(&c.common)
 	c.RemotesAPI = (*RemotesAPIService)(&c.common)
