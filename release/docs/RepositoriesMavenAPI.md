@@ -4,8 +4,9 @@ All URIs are relative to *http://localhost:8080*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**RepositoriesMavenMavenAddCachedContent**](RepositoriesMavenAPI.md#RepositoriesMavenMavenAddCachedContent) | **Post** /{maven_maven_repository_href}add_cached_content/ | Add cached content
 [**RepositoriesMavenMavenAddRole**](RepositoriesMavenAPI.md#RepositoriesMavenMavenAddRole) | **Post** /{maven_maven_repository_href}add_role/ | Add a role
+[**RepositoriesMavenMavenBuildPathIndex**](RepositoriesMavenAPI.md#RepositoriesMavenMavenBuildPathIndex) | **Post** /{maven_maven_repository_href}build_path_index/ | 
+[**RepositoriesMavenMavenCompactPathIndex**](RepositoriesMavenAPI.md#RepositoriesMavenMavenCompactPathIndex) | **Post** /{maven_maven_repository_href}compact_path_index/ | 
 [**RepositoriesMavenMavenCreate**](RepositoriesMavenAPI.md#RepositoriesMavenMavenCreate) | **Post** /api/pulp/{pulp_domain}/api/v3/repositories/maven/maven/ | Create a maven repository
 [**RepositoriesMavenMavenDelete**](RepositoriesMavenAPI.md#RepositoriesMavenMavenDelete) | **Delete** /{maven_maven_repository_href} | Delete a maven repository
 [**RepositoriesMavenMavenList**](RepositoriesMavenAPI.md#RepositoriesMavenMavenList) | **Get** /api/pulp/{pulp_domain}/api/v3/repositories/maven/maven/ | List maven repositorys
@@ -15,87 +16,15 @@ Method | HTTP request | Description
 [**RepositoriesMavenMavenMyPermissions**](RepositoriesMavenAPI.md#RepositoriesMavenMavenMyPermissions) | **Get** /{maven_maven_repository_href}my_permissions/ | List user permissions
 [**RepositoriesMavenMavenPackages**](RepositoriesMavenAPI.md#RepositoriesMavenMavenPackages) | **Get** /{maven_maven_repository_href}packages/ | List packages
 [**RepositoriesMavenMavenPartialUpdate**](RepositoriesMavenAPI.md#RepositoriesMavenMavenPartialUpdate) | **Patch** /{maven_maven_repository_href} | Update a maven repository
+[**RepositoriesMavenMavenPathIndexStatus**](RepositoriesMavenAPI.md#RepositoriesMavenMavenPathIndexStatus) | **Get** /{maven_maven_repository_href}path_index_status/ | 
 [**RepositoriesMavenMavenRead**](RepositoriesMavenAPI.md#RepositoriesMavenMavenRead) | **Get** /{maven_maven_repository_href} | Inspect a maven repository
 [**RepositoriesMavenMavenRemoveRole**](RepositoriesMavenAPI.md#RepositoriesMavenMavenRemoveRole) | **Post** /{maven_maven_repository_href}remove_role/ | Remove a role
+[**RepositoriesMavenMavenRepairIndexPages**](RepositoriesMavenAPI.md#RepositoriesMavenMavenRepairIndexPages) | **Post** /{maven_maven_repository_href}repair_index_pages/ | Repair index pages
 [**RepositoriesMavenMavenRepairMetadata**](RepositoriesMavenAPI.md#RepositoriesMavenMavenRepairMetadata) | **Post** /{maven_maven_repository_href}repair_metadata/ | Repair metadata
 [**RepositoriesMavenMavenSetLabel**](RepositoriesMavenAPI.md#RepositoriesMavenMavenSetLabel) | **Post** /{maven_maven_repository_href}set_label/ | Set a label
 [**RepositoriesMavenMavenUnsetLabel**](RepositoriesMavenAPI.md#RepositoriesMavenMavenUnsetLabel) | **Post** /{maven_maven_repository_href}unset_label/ | Unset a label
 [**RepositoriesMavenMavenUpdate**](RepositoriesMavenAPI.md#RepositoriesMavenMavenUpdate) | **Put** /{maven_maven_repository_href} | Update a maven repository
 
-
-
-## RepositoriesMavenMavenAddCachedContent
-
-> AsyncOperationResponse RepositoriesMavenMavenAddCachedContent(ctx, mavenMavenRepositoryHref).RepositoryAddCachedContent(repositoryAddCachedContent).XTaskDiagnostics(xTaskDiagnostics).Execute()
-
-Add cached content
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/content-services/zest/release/v2026"
-)
-
-func main() {
-	mavenMavenRepositoryHref := "mavenMavenRepositoryHref_example" // string | 
-	repositoryAddCachedContent := *openapiclient.NewRepositoryAddCachedContent() // RepositoryAddCachedContent | 
-	xTaskDiagnostics := []string{"Inner_example"} // []string | List of profilers to use on tasks. (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RepositoriesMavenAPI.RepositoriesMavenMavenAddCachedContent(context.Background(), mavenMavenRepositoryHref).RepositoryAddCachedContent(repositoryAddCachedContent).XTaskDiagnostics(xTaskDiagnostics).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RepositoriesMavenAPI.RepositoriesMavenMavenAddCachedContent``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `RepositoriesMavenMavenAddCachedContent`: AsyncOperationResponse
-	fmt.Fprintf(os.Stdout, "Response from `RepositoriesMavenAPI.RepositoriesMavenMavenAddCachedContent`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**mavenMavenRepositoryHref** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiRepositoriesMavenMavenAddCachedContentRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **repositoryAddCachedContent** | [**RepositoryAddCachedContent**](RepositoryAddCachedContent.md) |  | 
- **xTaskDiagnostics** | **[]string** | List of profilers to use on tasks. | 
-
-### Return type
-
-[**AsyncOperationResponse**](AsyncOperationResponse.md)
-
-### Authorization
-
-[basicAuth](../README.md#basicAuth), [cookieAuth](../README.md#cookieAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json, application/x-www-form-urlencoded, multipart/form-data
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
 
 
 ## RepositoriesMavenMavenAddRole
@@ -165,6 +94,152 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json, application/x-www-form-urlencoded, multipart/form-data
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RepositoriesMavenMavenBuildPathIndex
+
+> AsyncOperationResponse RepositoriesMavenMavenBuildPathIndex(ctx, mavenMavenRepositoryHref).XTaskDiagnostics(xTaskDiagnostics).RepositoryVersion(repositoryVersion).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/content-services/zest/release/v2026"
+)
+
+func main() {
+	mavenMavenRepositoryHref := "mavenMavenRepositoryHref_example" // string | 
+	xTaskDiagnostics := []string{"Inner_example"} // []string | List of profilers to use on tasks. (optional)
+	repositoryVersion := "repositoryVersion_example" // string | Optional pinned version HREF or PRN; otherwise resolve latest in task. (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RepositoriesMavenAPI.RepositoriesMavenMavenBuildPathIndex(context.Background(), mavenMavenRepositoryHref).XTaskDiagnostics(xTaskDiagnostics).RepositoryVersion(repositoryVersion).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RepositoriesMavenAPI.RepositoriesMavenMavenBuildPathIndex``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RepositoriesMavenMavenBuildPathIndex`: AsyncOperationResponse
+	fmt.Fprintf(os.Stdout, "Response from `RepositoriesMavenAPI.RepositoriesMavenMavenBuildPathIndex`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**mavenMavenRepositoryHref** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRepositoriesMavenMavenBuildPathIndexRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **xTaskDiagnostics** | **[]string** | List of profilers to use on tasks. | 
+ **repositoryVersion** | **string** | Optional pinned version HREF or PRN; otherwise resolve latest in task. | 
+
+### Return type
+
+[**AsyncOperationResponse**](AsyncOperationResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RepositoriesMavenMavenCompactPathIndex
+
+> AsyncOperationResponse RepositoriesMavenMavenCompactPathIndex(ctx, mavenMavenRepositoryHref).XTaskDiagnostics(xTaskDiagnostics).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/content-services/zest/release/v2026"
+)
+
+func main() {
+	mavenMavenRepositoryHref := "mavenMavenRepositoryHref_example" // string | 
+	xTaskDiagnostics := []string{"Inner_example"} // []string | List of profilers to use on tasks. (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RepositoriesMavenAPI.RepositoriesMavenMavenCompactPathIndex(context.Background(), mavenMavenRepositoryHref).XTaskDiagnostics(xTaskDiagnostics).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RepositoriesMavenAPI.RepositoriesMavenMavenCompactPathIndex``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RepositoriesMavenMavenCompactPathIndex`: AsyncOperationResponse
+	fmt.Fprintf(os.Stdout, "Response from `RepositoriesMavenAPI.RepositoriesMavenMavenCompactPathIndex`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**mavenMavenRepositoryHref** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRepositoriesMavenMavenCompactPathIndexRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **xTaskDiagnostics** | **[]string** | List of profilers to use on tasks. | 
+
+### Return type
+
+[**AsyncOperationResponse**](AsyncOperationResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -772,7 +847,7 @@ Name | Type | Description  | Notes
 
 ## RepositoriesMavenMavenPackages
 
-> PaginatedMavenRepositoryPackageListResponse RepositoriesMavenMavenPackages(ctx, mavenMavenRepositoryHref).XTaskDiagnostics(xTaskDiagnostics).ArtifactIdIstartswith(artifactIdIstartswith).GroupIdIstartswith(groupIdIstartswith).RepositoryVersion(repositoryVersion).Fields(fields).ExcludeFields(excludeFields).Execute()
+> PaginatedMavenRepositoryPackageListResponse RepositoriesMavenMavenPackages(ctx, mavenMavenRepositoryHref).XTaskDiagnostics(xTaskDiagnostics).ArtifactIdIstartswith(artifactIdIstartswith).GroupIdIstartswith(groupIdIstartswith).Limit(limit).Offset(offset).Ordering(ordering).RepositoryVersion(repositoryVersion).Search(search).Fields(fields).ExcludeFields(excludeFields).Execute()
 
 List packages
 
@@ -795,13 +870,17 @@ func main() {
 	xTaskDiagnostics := []string{"Inner_example"} // []string | List of profilers to use on tasks. (optional)
 	artifactIdIstartswith := "artifactIdIstartswith_example" // string | Case-insensitive prefix on artifact_id. (optional)
 	groupIdIstartswith := "groupIdIstartswith_example" // string | Case-insensitive prefix on group_id. (optional)
+	limit := int32(56) // int32 | Number of results to return per page. (optional)
+	offset := int32(56) // int32 | The initial index from which to return the results. (optional)
+	ordering := []string{"Inner_example"} // []string | Order catalog rows. Allowed: group_id, artifact_id, last_updated. Prefix with '-' for descending. Default is group_id, artifact_id. Ordering by group_id without artifact_id also sorts by artifact_id. (optional)
 	repositoryVersion := "repositoryVersion_example" // string | HREF or PRN of a version of this repository. Defaults to the latest complete version. (optional)
+	search := "search_example" // string | Case-insensitive package search. Without ':', group_id or artifact_id contains the term (OR). With ':', group_id contains the left part AND artifact_id contains the right part. A third ':' segment (version) is ignored. Empty or ':' is a no-op. Combines with prefix filters using AND. (optional)
 	fields := []string{"Inner_example"} // []string | A list of fields to include in the response. (optional)
 	excludeFields := []string{"Inner_example"} // []string | A list of fields to exclude from the response. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RepositoriesMavenAPI.RepositoriesMavenMavenPackages(context.Background(), mavenMavenRepositoryHref).XTaskDiagnostics(xTaskDiagnostics).ArtifactIdIstartswith(artifactIdIstartswith).GroupIdIstartswith(groupIdIstartswith).RepositoryVersion(repositoryVersion).Fields(fields).ExcludeFields(excludeFields).Execute()
+	resp, r, err := apiClient.RepositoriesMavenAPI.RepositoriesMavenMavenPackages(context.Background(), mavenMavenRepositoryHref).XTaskDiagnostics(xTaskDiagnostics).ArtifactIdIstartswith(artifactIdIstartswith).GroupIdIstartswith(groupIdIstartswith).Limit(limit).Offset(offset).Ordering(ordering).RepositoryVersion(repositoryVersion).Search(search).Fields(fields).ExcludeFields(excludeFields).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `RepositoriesMavenAPI.RepositoriesMavenMavenPackages``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -830,7 +909,11 @@ Name | Type | Description  | Notes
  **xTaskDiagnostics** | **[]string** | List of profilers to use on tasks. | 
  **artifactIdIstartswith** | **string** | Case-insensitive prefix on artifact_id. | 
  **groupIdIstartswith** | **string** | Case-insensitive prefix on group_id. | 
+ **limit** | **int32** | Number of results to return per page. | 
+ **offset** | **int32** | The initial index from which to return the results. | 
+ **ordering** | **[]string** | Order catalog rows. Allowed: group_id, artifact_id, last_updated. Prefix with &#39;-&#39; for descending. Default is group_id, artifact_id. Ordering by group_id without artifact_id also sorts by artifact_id. | 
  **repositoryVersion** | **string** | HREF or PRN of a version of this repository. Defaults to the latest complete version. | 
+ **search** | **string** | Case-insensitive package search. Without &#39;:&#39;, group_id or artifact_id contains the term (OR). With &#39;:&#39;, group_id contains the left part AND artifact_id contains the right part. A third &#39;:&#39; segment (version) is ignored. Empty or &#39;:&#39; is a no-op. Combines with prefix filters using AND. | 
  **fields** | **[]string** | A list of fields to include in the response. | 
  **excludeFields** | **[]string** | A list of fields to exclude from the response. | 
 
@@ -919,6 +1002,82 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json, application/x-www-form-urlencoded, multipart/form-data
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RepositoriesMavenMavenPathIndexStatus
+
+> MavenPathIndexStatusResponse RepositoriesMavenMavenPathIndexStatus(ctx, mavenMavenRepositoryHref).XTaskDiagnostics(xTaskDiagnostics).Fields(fields).ExcludeFields(excludeFields).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/content-services/zest/release/v2026"
+)
+
+func main() {
+	mavenMavenRepositoryHref := "mavenMavenRepositoryHref_example" // string | 
+	xTaskDiagnostics := []string{"Inner_example"} // []string | List of profilers to use on tasks. (optional)
+	fields := []string{"Inner_example"} // []string | A list of fields to include in the response. (optional)
+	excludeFields := []string{"Inner_example"} // []string | A list of fields to exclude from the response. (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RepositoriesMavenAPI.RepositoriesMavenMavenPathIndexStatus(context.Background(), mavenMavenRepositoryHref).XTaskDiagnostics(xTaskDiagnostics).Fields(fields).ExcludeFields(excludeFields).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RepositoriesMavenAPI.RepositoriesMavenMavenPathIndexStatus``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RepositoriesMavenMavenPathIndexStatus`: MavenPathIndexStatusResponse
+	fmt.Fprintf(os.Stdout, "Response from `RepositoriesMavenAPI.RepositoriesMavenMavenPathIndexStatus`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**mavenMavenRepositoryHref** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRepositoriesMavenMavenPathIndexStatusRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **xTaskDiagnostics** | **[]string** | List of profilers to use on tasks. | 
+ **fields** | **[]string** | A list of fields to include in the response. | 
+ **excludeFields** | **[]string** | A list of fields to exclude from the response. | 
+
+### Return type
+
+[**MavenPathIndexStatusResponse**](MavenPathIndexStatusResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -1069,6 +1228,78 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json, application/x-www-form-urlencoded, multipart/form-data
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RepositoriesMavenMavenRepairIndexPages
+
+> AsyncOperationResponse RepositoriesMavenMavenRepairIndexPages(ctx, mavenMavenRepositoryHref).XTaskDiagnostics(xTaskDiagnostics).Execute()
+
+Repair index pages
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/content-services/zest/release/v2026"
+)
+
+func main() {
+	mavenMavenRepositoryHref := "mavenMavenRepositoryHref_example" // string | 
+	xTaskDiagnostics := []string{"Inner_example"} // []string | List of profilers to use on tasks. (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RepositoriesMavenAPI.RepositoriesMavenMavenRepairIndexPages(context.Background(), mavenMavenRepositoryHref).XTaskDiagnostics(xTaskDiagnostics).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RepositoriesMavenAPI.RepositoriesMavenMavenRepairIndexPages``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RepositoriesMavenMavenRepairIndexPages`: AsyncOperationResponse
+	fmt.Fprintf(os.Stdout, "Response from `RepositoriesMavenAPI.RepositoriesMavenMavenRepairIndexPages`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**mavenMavenRepositoryHref** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRepositoriesMavenMavenRepairIndexPagesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **xTaskDiagnostics** | **[]string** | List of profilers to use on tasks. | 
+
+### Return type
+
+[**AsyncOperationResponse**](AsyncOperationResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
