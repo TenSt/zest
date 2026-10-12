@@ -22,20 +22,6 @@ func Test_zest_RepositoriesMavenAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test RepositoriesMavenAPIService RepositoriesMavenMavenAddCachedContent", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var mavenMavenRepositoryHref string
-
-		resp, httpRes, err := apiClient.RepositoriesMavenAPI.RepositoriesMavenMavenAddCachedContent(context.Background(), mavenMavenRepositoryHref).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test RepositoriesMavenAPIService RepositoriesMavenMavenAddRole", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -43,6 +29,34 @@ func Test_zest_RepositoriesMavenAPIService(t *testing.T) {
 		var mavenMavenRepositoryHref string
 
 		resp, httpRes, err := apiClient.RepositoriesMavenAPI.RepositoriesMavenMavenAddRole(context.Background(), mavenMavenRepositoryHref).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RepositoriesMavenAPIService RepositoriesMavenMavenBuildPathIndex", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var mavenMavenRepositoryHref string
+
+		resp, httpRes, err := apiClient.RepositoriesMavenAPI.RepositoriesMavenMavenBuildPathIndex(context.Background(), mavenMavenRepositoryHref).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RepositoriesMavenAPIService RepositoriesMavenMavenCompactPathIndex", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var mavenMavenRepositoryHref string
+
+		resp, httpRes, err := apiClient.RepositoriesMavenAPI.RepositoriesMavenMavenCompactPathIndex(context.Background(), mavenMavenRepositoryHref).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -162,6 +176,20 @@ func Test_zest_RepositoriesMavenAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test RepositoriesMavenAPIService RepositoriesMavenMavenPackagesFlat", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var mavenMavenRepositoryHref string
+
+		resp, httpRes, err := apiClient.RepositoriesMavenAPI.RepositoriesMavenMavenPackagesFlat(context.Background(), mavenMavenRepositoryHref).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test RepositoriesMavenAPIService RepositoriesMavenMavenPartialUpdate", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -169,6 +197,20 @@ func Test_zest_RepositoriesMavenAPIService(t *testing.T) {
 		var mavenMavenRepositoryHref string
 
 		resp, httpRes, err := apiClient.RepositoriesMavenAPI.RepositoriesMavenMavenPartialUpdate(context.Background(), mavenMavenRepositoryHref).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RepositoriesMavenAPIService RepositoriesMavenMavenPathIndexStatus", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var mavenMavenRepositoryHref string
+
+		resp, httpRes, err := apiClient.RepositoriesMavenAPI.RepositoriesMavenMavenPathIndexStatus(context.Background(), mavenMavenRepositoryHref).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -197,6 +239,20 @@ func Test_zest_RepositoriesMavenAPIService(t *testing.T) {
 		var mavenMavenRepositoryHref string
 
 		resp, httpRes, err := apiClient.RepositoriesMavenAPI.RepositoriesMavenMavenRemoveRole(context.Background(), mavenMavenRepositoryHref).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RepositoriesMavenAPIService RepositoriesMavenMavenRepairIndexPages", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var mavenMavenRepositoryHref string
+
+		resp, httpRes, err := apiClient.RepositoriesMavenAPI.RepositoriesMavenMavenRepairIndexPages(context.Background(), mavenMavenRepositoryHref).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

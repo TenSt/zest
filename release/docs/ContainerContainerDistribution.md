@@ -5,12 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BasePath** | **string** | The base (relative) path component of the published url. Avoid paths that                     overlap with other distribution base paths (e.g. \&quot;foo\&quot; and \&quot;foo/bar\&quot;) | 
-**RepositoryVersion** | Pointer to **NullableString** | RepositoryVersion to be served | [optional] 
+**Hidden** | Pointer to **bool** | Whether this distribution should be shown in the content app. | [optional] [default to false]
+**PulpLabels** | Pointer to **map[string]string** |  | [optional] 
 **Name** | **string** | A unique name. Ex, &#x60;rawhide&#x60; and &#x60;stable&#x60;. | 
 **ContentGuard** | Pointer to **string** | An optional content-guard. If none is specified, a default one will be used. | [optional] 
-**Hidden** | Pointer to **bool** | Whether this distribution should be shown in the content app. | [optional] [default to false]
 **Repository** | Pointer to **NullableString** | The latest RepositoryVersion for this Repository will be served. | [optional] 
-**PulpLabels** | Pointer to **map[string]string** |  | [optional] 
+**RepositoryVersion** | Pointer to **NullableString** | RepositoryVersion to be served | [optional] 
 **Private** | Pointer to **bool** | Restrict pull access to explicitly authorized users. Defaults to unrestricted pull access. | [optional] 
 **Description** | Pointer to **NullableString** | An optional description. | [optional] 
 
@@ -53,41 +53,56 @@ and a boolean to check if the value has been set.
 SetBasePath sets BasePath field to given value.
 
 
-### GetRepositoryVersion
+### GetHidden
 
-`func (o *ContainerContainerDistribution) GetRepositoryVersion() string`
+`func (o *ContainerContainerDistribution) GetHidden() bool`
 
-GetRepositoryVersion returns the RepositoryVersion field if non-nil, zero value otherwise.
+GetHidden returns the Hidden field if non-nil, zero value otherwise.
 
-### GetRepositoryVersionOk
+### GetHiddenOk
 
-`func (o *ContainerContainerDistribution) GetRepositoryVersionOk() (*string, bool)`
+`func (o *ContainerContainerDistribution) GetHiddenOk() (*bool, bool)`
 
-GetRepositoryVersionOk returns a tuple with the RepositoryVersion field if it's non-nil, zero value otherwise
+GetHiddenOk returns a tuple with the Hidden field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetRepositoryVersion
+### SetHidden
 
-`func (o *ContainerContainerDistribution) SetRepositoryVersion(v string)`
+`func (o *ContainerContainerDistribution) SetHidden(v bool)`
 
-SetRepositoryVersion sets RepositoryVersion field to given value.
+SetHidden sets Hidden field to given value.
 
-### HasRepositoryVersion
+### HasHidden
 
-`func (o *ContainerContainerDistribution) HasRepositoryVersion() bool`
+`func (o *ContainerContainerDistribution) HasHidden() bool`
 
-HasRepositoryVersion returns a boolean if a field has been set.
+HasHidden returns a boolean if a field has been set.
 
-### SetRepositoryVersionNil
+### GetPulpLabels
 
-`func (o *ContainerContainerDistribution) SetRepositoryVersionNil(b bool)`
+`func (o *ContainerContainerDistribution) GetPulpLabels() map[string]*string`
 
- SetRepositoryVersionNil sets the value for RepositoryVersion to be an explicit nil
+GetPulpLabels returns the PulpLabels field if non-nil, zero value otherwise.
 
-### UnsetRepositoryVersion
-`func (o *ContainerContainerDistribution) UnsetRepositoryVersion()`
+### GetPulpLabelsOk
 
-UnsetRepositoryVersion ensures that no value is present for RepositoryVersion, not even an explicit nil
+`func (o *ContainerContainerDistribution) GetPulpLabelsOk() (*map[string]*string, bool)`
+
+GetPulpLabelsOk returns a tuple with the PulpLabels field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPulpLabels
+
+`func (o *ContainerContainerDistribution) SetPulpLabels(v map[string]*string)`
+
+SetPulpLabels sets PulpLabels field to given value.
+
+### HasPulpLabels
+
+`func (o *ContainerContainerDistribution) HasPulpLabels() bool`
+
+HasPulpLabels returns a boolean if a field has been set.
+
 ### GetName
 
 `func (o *ContainerContainerDistribution) GetName() string`
@@ -133,31 +148,6 @@ SetContentGuard sets ContentGuard field to given value.
 
 HasContentGuard returns a boolean if a field has been set.
 
-### GetHidden
-
-`func (o *ContainerContainerDistribution) GetHidden() bool`
-
-GetHidden returns the Hidden field if non-nil, zero value otherwise.
-
-### GetHiddenOk
-
-`func (o *ContainerContainerDistribution) GetHiddenOk() (*bool, bool)`
-
-GetHiddenOk returns a tuple with the Hidden field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHidden
-
-`func (o *ContainerContainerDistribution) SetHidden(v bool)`
-
-SetHidden sets Hidden field to given value.
-
-### HasHidden
-
-`func (o *ContainerContainerDistribution) HasHidden() bool`
-
-HasHidden returns a boolean if a field has been set.
-
 ### GetRepository
 
 `func (o *ContainerContainerDistribution) GetRepository() string`
@@ -193,31 +183,41 @@ HasRepository returns a boolean if a field has been set.
 `func (o *ContainerContainerDistribution) UnsetRepository()`
 
 UnsetRepository ensures that no value is present for Repository, not even an explicit nil
-### GetPulpLabels
+### GetRepositoryVersion
 
-`func (o *ContainerContainerDistribution) GetPulpLabels() map[string]*string`
+`func (o *ContainerContainerDistribution) GetRepositoryVersion() string`
 
-GetPulpLabels returns the PulpLabels field if non-nil, zero value otherwise.
+GetRepositoryVersion returns the RepositoryVersion field if non-nil, zero value otherwise.
 
-### GetPulpLabelsOk
+### GetRepositoryVersionOk
 
-`func (o *ContainerContainerDistribution) GetPulpLabelsOk() (*map[string]*string, bool)`
+`func (o *ContainerContainerDistribution) GetRepositoryVersionOk() (*string, bool)`
 
-GetPulpLabelsOk returns a tuple with the PulpLabels field if it's non-nil, zero value otherwise
+GetRepositoryVersionOk returns a tuple with the RepositoryVersion field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPulpLabels
+### SetRepositoryVersion
 
-`func (o *ContainerContainerDistribution) SetPulpLabels(v map[string]*string)`
+`func (o *ContainerContainerDistribution) SetRepositoryVersion(v string)`
 
-SetPulpLabels sets PulpLabels field to given value.
+SetRepositoryVersion sets RepositoryVersion field to given value.
 
-### HasPulpLabels
+### HasRepositoryVersion
 
-`func (o *ContainerContainerDistribution) HasPulpLabels() bool`
+`func (o *ContainerContainerDistribution) HasRepositoryVersion() bool`
 
-HasPulpLabels returns a boolean if a field has been set.
+HasRepositoryVersion returns a boolean if a field has been set.
 
+### SetRepositoryVersionNil
+
+`func (o *ContainerContainerDistribution) SetRepositoryVersionNil(b bool)`
+
+ SetRepositoryVersionNil sets the value for RepositoryVersion to be an explicit nil
+
+### UnsetRepositoryVersion
+`func (o *ContainerContainerDistribution) UnsetRepositoryVersion()`
+
+UnsetRepositoryVersion ensures that no value is present for RepositoryVersion, not even an explicit nil
 ### GetPrivate
 
 `func (o *ContainerContainerDistribution) GetPrivate() bool`
