@@ -10,8 +10,6 @@ api_api_create_domain.go
 api_api_debug_auth_header.go
 api_api_debug_cleanup_stale_locks.go
 api_api_debug_database_triggers.go
-api_api_debug_domainorg_backfill_report.go
-api_api_debug_domainorg_rbac_report.go
 api_api_debug_flush_content_cache.go
 api_api_debug_release_task_locks.go
 api_api_debug_stale_locks.go
@@ -156,6 +154,9 @@ api_repository_versions.go
 api_roles.go
 api_rpm_comps.go
 api_rpm_copy.go
+api_rpm_errata.go
+api_rpm_module_streams.go
+api_rpm_package_groups.go
 api_rpm_packages.go
 api_rpm_prune.go
 api_signing_services.go
@@ -183,8 +184,6 @@ docs/ApiCreateDomainAPI.md
 docs/ApiDebugAuthHeaderAPI.md
 docs/ApiDebugCleanupStaleLocksAPI.md
 docs/ApiDebugDatabaseTriggersAPI.md
-docs/ApiDebugDomainorgBackfillReportAPI.md
-docs/ApiDebugDomainorgRbacReportAPI.md
 docs/ApiDebugFlushContentCacheAPI.md
 docs/ApiDebugReleaseTaskLocksAPI.md
 docs/ApiDebugStaleLocksAPI.md
@@ -722,6 +721,8 @@ docs/RolesAPI.md
 docs/RpmCompsAPI.md
 docs/RpmCopyAPI.md
 docs/RpmDistributionTreeResponse.md
+docs/RpmErrataAPI.md
+docs/RpmModuleStreamsAPI.md
 docs/RpmModulemd.md
 docs/RpmModulemdDefaults.md
 docs/RpmModulemdDefaultsResponse.md
@@ -732,6 +733,7 @@ docs/RpmPackage.md
 docs/RpmPackageCategoryResponse.md
 docs/RpmPackageEnvironmentResponse.md
 docs/RpmPackageGroupResponse.md
+docs/RpmPackageGroupsAPI.md
 docs/RpmPackageLangpacksResponse.md
 docs/RpmPackageResponse.md
 docs/RpmPackagesAPI.md
@@ -1298,8 +1300,6 @@ test/api_api_create_domain_test.go
 test/api_api_debug_auth_header_test.go
 test/api_api_debug_cleanup_stale_locks_test.go
 test/api_api_debug_database_triggers_test.go
-test/api_api_debug_domainorg_backfill_report_test.go
-test/api_api_debug_domainorg_rbac_report_test.go
 test/api_api_debug_flush_content_cache_test.go
 test/api_api_debug_release_task_locks_test.go
 test/api_api_debug_stale_locks_test.go
@@ -1444,6 +1444,9 @@ test/api_repository_versions_test.go
 test/api_roles_test.go
 test/api_rpm_comps_test.go
 test/api_rpm_copy_test.go
+test/api_rpm_errata_test.go
+test/api_rpm_module_streams_test.go
+test/api_rpm_package_groups_test.go
 test/api_rpm_packages_test.go
 test/api_rpm_prune_test.go
 test/api_signing_services_test.go

@@ -64,10 +64,6 @@ type APIClient struct {
 
 	ApiDebugDatabaseTriggersAPI *ApiDebugDatabaseTriggersAPIService
 
-	ApiDebugDomainorgBackfillReportAPI *ApiDebugDomainorgBackfillReportAPIService
-
-	ApiDebugDomainorgRbacReportAPI *ApiDebugDomainorgRbacReportAPIService
-
 	ApiDebugFlushContentCacheAPI *ApiDebugFlushContentCacheAPIService
 
 	ApiDebugReleaseTaskLocksAPI *ApiDebugReleaseTaskLocksAPIService
@@ -356,6 +352,12 @@ type APIClient struct {
 
 	RpmCopyAPI *RpmCopyAPIService
 
+	RpmErrataAPI *RpmErrataAPIService
+
+	RpmModuleStreamsAPI *RpmModuleStreamsAPIService
+
+	RpmPackageGroupsAPI *RpmPackageGroupsAPIService
+
 	RpmPackagesAPI *RpmPackagesAPIService
 
 	RpmPruneAPI *RpmPruneAPIService
@@ -410,8 +412,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ApiDebugAuthHeaderAPI = (*ApiDebugAuthHeaderAPIService)(&c.common)
 	c.ApiDebugCleanupStaleLocksAPI = (*ApiDebugCleanupStaleLocksAPIService)(&c.common)
 	c.ApiDebugDatabaseTriggersAPI = (*ApiDebugDatabaseTriggersAPIService)(&c.common)
-	c.ApiDebugDomainorgBackfillReportAPI = (*ApiDebugDomainorgBackfillReportAPIService)(&c.common)
-	c.ApiDebugDomainorgRbacReportAPI = (*ApiDebugDomainorgRbacReportAPIService)(&c.common)
 	c.ApiDebugFlushContentCacheAPI = (*ApiDebugFlushContentCacheAPIService)(&c.common)
 	c.ApiDebugReleaseTaskLocksAPI = (*ApiDebugReleaseTaskLocksAPIService)(&c.common)
 	c.ApiDebugStaleLocksAPI = (*ApiDebugStaleLocksAPIService)(&c.common)
@@ -556,6 +556,9 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.RolesAPI = (*RolesAPIService)(&c.common)
 	c.RpmCompsAPI = (*RpmCompsAPIService)(&c.common)
 	c.RpmCopyAPI = (*RpmCopyAPIService)(&c.common)
+	c.RpmErrataAPI = (*RpmErrataAPIService)(&c.common)
+	c.RpmModuleStreamsAPI = (*RpmModuleStreamsAPIService)(&c.common)
+	c.RpmPackageGroupsAPI = (*RpmPackageGroupsAPIService)(&c.common)
 	c.RpmPackagesAPI = (*RpmPackagesAPIService)(&c.common)
 	c.RpmPruneAPI = (*RpmPruneAPIService)(&c.common)
 	c.SigningServicesAPI = (*SigningServicesAPIService)(&c.common)
