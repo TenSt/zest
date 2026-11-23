@@ -64,10 +64,6 @@ type APIClient struct {
 
 	ApiDebugDatabaseTriggersAPI *ApiDebugDatabaseTriggersAPIService
 
-	ApiDebugDomainorgBackfillReportAPI *ApiDebugDomainorgBackfillReportAPIService
-
-	ApiDebugDomainorgRbacReportAPI *ApiDebugDomainorgRbacReportAPIService
-
 	ApiDebugFlushContentCacheAPI *ApiDebugFlushContentCacheAPIService
 
 	ApiDebugReleaseTaskLocksAPI *ApiDebugReleaseTaskLocksAPIService
@@ -79,6 +75,8 @@ type APIClient struct {
 	ApiDebugTaskQueueAPI *ApiDebugTaskQueueAPIService
 
 	ApiMigrateDomainAPI *ApiMigrateDomainAPIService
+
+	ApiNpmBackfillManifestsAPI *ApiNpmBackfillManifestsAPIService
 
 	ApiPublicDebugAuthHeaderAPI *ApiPublicDebugAuthHeaderAPIService
 
@@ -168,6 +166,8 @@ type APIClient struct {
 
 	ContentguardsAPI *ContentguardsAPIService
 
+	ContentguardsAndgateAPI *ContentguardsAndgateAPIService
+
 	ContentguardsCompositeAPI *ContentguardsCompositeAPIService
 
 	ContentguardsContentRedirectAPI *ContentguardsContentRedirectAPIService
@@ -241,6 +241,8 @@ type APIClient struct {
 	LoginAPI *LoginAPIService
 
 	NpmAPI *NpmAPIService
+
+	NpmBackfillManifestsAPI *NpmBackfillManifestsAPIService
 
 	NpmPingAPI *NpmPingAPIService
 
@@ -356,6 +358,12 @@ type APIClient struct {
 
 	RpmCopyAPI *RpmCopyAPIService
 
+	RpmErrataAPI *RpmErrataAPIService
+
+	RpmModuleStreamsAPI *RpmModuleStreamsAPIService
+
+	RpmPackageGroupsAPI *RpmPackageGroupsAPIService
+
 	RpmPackagesAPI *RpmPackagesAPIService
 
 	RpmPruneAPI *RpmPruneAPIService
@@ -410,14 +418,13 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ApiDebugAuthHeaderAPI = (*ApiDebugAuthHeaderAPIService)(&c.common)
 	c.ApiDebugCleanupStaleLocksAPI = (*ApiDebugCleanupStaleLocksAPIService)(&c.common)
 	c.ApiDebugDatabaseTriggersAPI = (*ApiDebugDatabaseTriggersAPIService)(&c.common)
-	c.ApiDebugDomainorgBackfillReportAPI = (*ApiDebugDomainorgBackfillReportAPIService)(&c.common)
-	c.ApiDebugDomainorgRbacReportAPI = (*ApiDebugDomainorgRbacReportAPIService)(&c.common)
 	c.ApiDebugFlushContentCacheAPI = (*ApiDebugFlushContentCacheAPIService)(&c.common)
 	c.ApiDebugReleaseTaskLocksAPI = (*ApiDebugReleaseTaskLocksAPIService)(&c.common)
 	c.ApiDebugStaleLocksAPI = (*ApiDebugStaleLocksAPIService)(&c.common)
 	c.ApiDebugTaskDebugAPI = (*ApiDebugTaskDebugAPIService)(&c.common)
 	c.ApiDebugTaskQueueAPI = (*ApiDebugTaskQueueAPIService)(&c.common)
 	c.ApiMigrateDomainAPI = (*ApiMigrateDomainAPIService)(&c.common)
+	c.ApiNpmBackfillManifestsAPI = (*ApiNpmBackfillManifestsAPIService)(&c.common)
 	c.ApiPublicDebugAuthHeaderAPI = (*ApiPublicDebugAuthHeaderAPIService)(&c.common)
 	c.ApiRdsConnectionTestsAPI = (*ApiRdsConnectionTestsAPIService)(&c.common)
 	c.ApiTestPagerdutyAlertAPI = (*ApiTestPagerdutyAlertAPIService)(&c.common)
@@ -462,6 +469,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ContentViewsRpmPackagesListAPI = (*ContentViewsRpmPackagesListAPIService)(&c.common)
 	c.ContentYanksAPI = (*ContentYanksAPIService)(&c.common)
 	c.ContentguardsAPI = (*ContentguardsAPIService)(&c.common)
+	c.ContentguardsAndgateAPI = (*ContentguardsAndgateAPIService)(&c.common)
 	c.ContentguardsCompositeAPI = (*ContentguardsCompositeAPIService)(&c.common)
 	c.ContentguardsContentRedirectAPI = (*ContentguardsContentRedirectAPIService)(&c.common)
 	c.ContentguardsEnvvarHeaderAPI = (*ContentguardsEnvvarHeaderAPIService)(&c.common)
@@ -499,6 +507,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.LivezAPI = (*LivezAPIService)(&c.common)
 	c.LoginAPI = (*LoginAPIService)(&c.common)
 	c.NpmAPI = (*NpmAPIService)(&c.common)
+	c.NpmBackfillManifestsAPI = (*NpmBackfillManifestsAPIService)(&c.common)
 	c.NpmPingAPI = (*NpmPingAPIService)(&c.common)
 	c.NpmWhoamiAPI = (*NpmWhoamiAPIService)(&c.common)
 	c.OrphansAPI = (*OrphansAPIService)(&c.common)
@@ -556,6 +565,9 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.RolesAPI = (*RolesAPIService)(&c.common)
 	c.RpmCompsAPI = (*RpmCompsAPIService)(&c.common)
 	c.RpmCopyAPI = (*RpmCopyAPIService)(&c.common)
+	c.RpmErrataAPI = (*RpmErrataAPIService)(&c.common)
+	c.RpmModuleStreamsAPI = (*RpmModuleStreamsAPIService)(&c.common)
+	c.RpmPackageGroupsAPI = (*RpmPackageGroupsAPIService)(&c.common)
 	c.RpmPackagesAPI = (*RpmPackagesAPIService)(&c.common)
 	c.RpmPruneAPI = (*RpmPruneAPIService)(&c.common)
 	c.SigningServicesAPI = (*SigningServicesAPIService)(&c.common)
